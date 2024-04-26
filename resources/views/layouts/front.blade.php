@@ -47,6 +47,9 @@
             max-width: 300px;
             max-height: 300px;
         }
+    .custom-shadow {
+        box-shadow: 0 10px 8px rgba(19, 18, 18, 0.1); /* Sesuaikan dengan efek bayangan yang diinginkan */
+        }
 </style>
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
