@@ -158,6 +158,55 @@
         </div>
     </div>
     <!-- Service End -->
+
+    <!-- rekomendasi lowongan -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h1 class="mb-0">Rekomendasi Lowongan</h1>
+            </div>
+            <div class="row g-2">
+                @for ($i = 1; $i <= 4; $i++)
+                <div class="col-lg-3 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="card card-lowongan">
+                        <div style=" position: relative;display: inline-block;">
+                            <img src="{{ asset('img/bg1.jpeg') }}" class="card-img-top" style="position: relative;z-index: 1;">
+                            <div class="transparan" style="color: white ;background-color: rgba(0, 0, 0, 0.5); bottom: 0; position: absolute; z-index: 2;height: 25%; width: 100%; border-radius: 10%;">
+                                PT. ALIM RUGI HOYONG UNTUNG
+                            </div>
+
+                        </div>
+                        <div class="card-body" style="overflow-x: auto;max-width: 100%" >
+                            <h5 class="card-title">Bedah Rumah</h5>
+                            <table>
+                                <tr>
+                                    <td>Penempatan</td>
+                                    <td> : </td>
+                                    <td>bandung Barat</td>
+                                </tr>
+                                <tr>
+                                    <td>Peran Pekerjaan</td>
+                                    <td> : </td>
+                                    <td>Menghancurkan Rumah</td>
+                                </tr>
+                                <tr>
+                                    <td>Tingkat</td>
+                                    <td> : </td>
+                                    <td><b>Newbie</b></td>
+                                </tr>
+                            </table>
+                            <a href="#" class="btn btn-primary" style="float: right; border-radius: 10px; background-color: darkblue; margin-top: 10px;">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                @endfor
+            </div>
+            <div class="wow zoomIn" data-wow-delay="0.1s" style="display: flex; justify-content: center; padding-top: 10%;">
+                <button class="btn btn-primary" style="border-radius: 8px;background-color: darkblue;" >Lihat Lebih Banyak</button>
+            </div>
+        </div>
+    </div>
+    <!-- end rekomendasi lowongan -->
     
     <div class="wow zoomIn" data-wow-delay="0.1s">
         <hr style="width: 70%; margin: 0 auto; border: 2px solid black;">
@@ -179,7 +228,7 @@
                         <div class="blog-item bg-white custom-shadow" style="border-radius: 10px;">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="{{ asset('img/b1.jpg') }}" class="rounded me-3"
+                                    <img src="{{ ('img/b1.assetjpg') }}" class="rounded me-3"
                                         style="width:125px; height:150px">
                                 </div>
                                 <div class="col-md-8">
@@ -203,5 +252,4 @@
             </div>
         </div>
     </div>
-    <!-- Blog Start -->
 @endsection
