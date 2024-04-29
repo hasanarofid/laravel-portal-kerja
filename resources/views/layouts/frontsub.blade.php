@@ -131,16 +131,16 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                             style="color: black">PENCARI KERJA TERDAFTAR</a>
                         <div class="dropdown-menu m-0">
-                            <a href="{{ url('/register') }}" class="dropdown-item">Daftar Akun</a>
-                            <a href="{{ url('/login') }}" class="dropdown-item">Login</a>
+                            <a href="{{ url('/register') }}" class="dropdown-item {{ request()->is('register*') ? 'active' : '' }}">Daftar Akun</a>
+                            <a href="{{ url('/loginpencariankerja') }}" class="dropdown-item {{ request()->is('loginpencariankerja*') ? 'active' : '' }}">Login</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                        <a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown"
                             style="color: black">PERUSAHAAN</a>
                         <div class="dropdown-menu m-0">
-                            <a href="{{ url('/register_perusahaan') }}" class="dropdown-item">Daftar Akun</a>
-                            <a href="{{ url('/login') }}" class="dropdown-item">Login</a>
+                            <a href="{{ url('/daftar') }}" class="dropdown-item {{ request()->is('daftar*') ? 'active' : '' }}">Daftar Akun</a>
+                            <a href="{{ url('/masukPerusahaan') }}" class="dropdown-item {{ request()->is('masukPerusahaan*') ? 'active' : '' }}">Login</a>
                         </div>
                     </div>
                 </div>
