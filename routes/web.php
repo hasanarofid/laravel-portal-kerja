@@ -5,6 +5,10 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/ak1', 'HomeController@ak1')->name('ak1');
+Route::get('/register', 'HomeController@register')->name('register');
+Route::get('/daftar', 'HomeController@daftar')->name('daftar');
+Route::get('/loginpencariankerja', 'HomeController@loginpencariankerja')->name('loginpencariankerja');
+Route::get('/masukPerusahaan', 'HomeController@masukPerusahaan')->name('masukPerusahaan');
 Route::get('/lowongan', 'HomeController@lowongan')->name('lowongan');
 Route::get('/pencari', 'HomeController@pencari')->name('pencari');
 Route::get('search', 'HomeController@search')->name('search');
