@@ -50,6 +50,29 @@
     .custom-shadow {
         box-shadow: 0 10px 8px rgba(19, 18, 18, 0.1); /* Sesuaikan dengan efek bayangan yang diinginkan */
         }
+
+    table, td, th {
+        padding: 3px;
+    }
+    .container-lowongan{
+        height: 90vh;
+        margin: 2rem;
+        display: grid;
+        position: relative;
+        /* grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr; */
+    }
+    .icon-container {
+    width: 50px; /* Atur lebar div sesuai kebutuhan */
+    height: 50px; /* Atur tinggi div sesuai kebutuhan */
+    /* Ganti warna ikon atau latar belakang div sesuai kebutuhan */
+    background-color: #f0f0f0;
+    }
+    .card-lowongan {
+        margin: 10px;
+        border-radius: 25px;
+        box-shadow: 0 10px 8px rgba(19, 18, 18, 0.1);
+    }
 </style>
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
