@@ -228,7 +228,7 @@
                 <div class="blog-item bg-white custom-shadow" style="border-radius: 10px;">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="{{ ('img/b1.assetjpg') }}" class="rounded me-3" style="width:125px; height:150px">
+                            <img src="{{ ('img/b1.jpg') }}" class="rounded me-3" style="width:125px; height:150px">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -238,7 +238,7 @@
                                     Pengalaman <br>
                                     Umur
                                 </p>
-                                <button class="btn btn-primary" style="float:right; font-size: 12px; border-radius: 8px;">Lihat Detail</button>
+                                <button class="btn btn-primary" style="float:right; font-size: 12px; border-radius: 8px; background-color: darkblue;">Lihat Detail</button>
                             </div>
                         </div>
                     </div>
@@ -247,7 +247,7 @@
         @endfor
     </div>
     <div class="wow zoomIn" data-wow-delay="0.1s" style="display: flex; justify-content: center;">
-        <button class="btn btn-primary" style="border-radius: 8px;">Lihat Lebih Banyak</button>
+        <button class="btn btn-primary" style="border-radius: 8px; background-color: darkblue;">Lihat Lebih Banyak</button>
     </div>
 </div>
 </div>

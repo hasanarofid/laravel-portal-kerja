@@ -35,4 +35,9 @@ class HomeController extends Controller
 
         return view('jobs.index', compact(['jobs', 'banner']));
     }
+
+    public function ak1(Request $request)
+    {
+        return view('ak1.index');
+    }
 }
