@@ -121,8 +121,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">PERUSAHAAN</a>
                         <div class="dropdown-menu m-0">
-                            <a href="{{ url('/register_perusahaan') }}" class="dropdown-item">Daftar Akun</a>
-                            <a href="{{ url('/login') }}" class="dropdown-item">Login</a>
+                            <a href="{{ url('/daftar') }}" class="dropdown-item">Daftar Akun</a>
+                            <a href="{{ url('/masukPerusahaan') }}" class="dropdown-item">Login</a>
                         </div>
                     </div>
                 </div>

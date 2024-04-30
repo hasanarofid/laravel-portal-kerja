@@ -35,4 +35,29 @@ class HomeController extends Controller
 
         return view('jobs.index', compact(['jobs', 'banner']));
     }
+
+    public function ak1(Request $request)
+    {
+        return view('navbar.ak1');
+    }
+
+    public function register(Request $request)
+    {
+        return view('navbar.register_pencariankerja');
+    } 
+    
+    public function loginpencariankerja(Request $request)
+    {
+        return view('navbar.login_pencariankerja');
+    }
+
+    public function daftar(Request $request)
+    {
+        return view('navbar.register_perusahaan');
+    } 
+    
+    public function masukPerusahaan(Request $request)
+    {
+        return view('navbar.login_perusahaan');
+    }
 }
