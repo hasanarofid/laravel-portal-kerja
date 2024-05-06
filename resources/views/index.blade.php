@@ -252,3 +252,46 @@
 </div>
 </div>
 @endsection
+@if ($errors->any())
+    <script stype="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                text: 'Maaf, sepertinya ada beberapa kesalahan yang terdeteksi, harap coba lagi.',
+                icon: 'error',
+                buttonsStyling: !1,
+                confirmButtonText: "Lanjutkan",
+                customClass: {
+                    confirmButton: "btn btn-danger"
+                },
+                allowOutsideClick: false,
+            });
+        });
+    </script>
+@endif
+@if (Session::has('error'))
+    <script stype="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                text: '{{ session('error') }}',
+                icon: 'error',
+                buttonsStyling: !1,
+                confirmButtonText: "Lanjutkan",
+                customClass: {
+                    confirmButton: "btn btn-danger"
+                },
+                allowOutsideClick: false,
+            });
+        });
+    </script>
+@endif
+@if (Session::has('success'))
+    <script stype="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+            title: "SELAMAT!",
+            text: "Anda Berhasil Keluar",
+            icon: "success"
+            });
+        });
+    </script>
+@endif

@@ -115,7 +115,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">PENCARI KERJA TERDAFTAR</a>
                         <div class="dropdown-menu m-0">
                             <a href="{{ url('/register') }}" class="dropdown-item">Daftar Akun</a>
-                            <a href="{{ url('/login') }}" class="dropdown-item">Login</a>
+                            <a href="{{ url('/loginpencariankerja') }}" class="dropdown-item">Login</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -283,6 +283,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('theme/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
