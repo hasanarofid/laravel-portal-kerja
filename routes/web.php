@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
 use App\Http\Controllers\users\DashboardController;
 use App\Http\Controllers\users\HomeController as UsersHomeController;
+use App\Http\Controllers\users\ProfilController;
 use Illuminate\Support\Facades\Route;
 // Route::redirect('/home', '/admin');
 // Auth::routes(['register' => false]);
@@ -33,6 +34,7 @@ Route::post('/register-proses', [HomeController::class, 'register_proses'])->nam
 // dashboard users
 Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.users'], function () {
     Route::get('home', [UsersHomeController::class, 'index'])->name('home');
+    Route::get('profil', [ProfilController::class, 'index'])->name('profil');
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 });
 

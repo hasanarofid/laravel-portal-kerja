@@ -5,3 +5,6 @@
 @section('header')
     Home
 @endsection
+@section('content')
+
+@endsection
