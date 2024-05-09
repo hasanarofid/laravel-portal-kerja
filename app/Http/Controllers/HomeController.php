@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Location;
 use App\Job;
+use App\Roles;
 use App\RoleUser;
 use App\users;
+use App\UsersPencaker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -47,7 +51,46 @@ class HomeController extends Controller
     public function register(Request $request)
     {
         return view('navbar.register_pencariankerja');
-    } 
+    }
+
+    public function register_proses(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'nik' => 'required',
+            'no_tlp' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $insertUser = UsersPencaker::create([
+                'name'                  => $request->name,
+                'email'                 => $request->email,
+                'password'              => $request->password,
+                'username'              => $request->username,
+                'nik'                   => $request->nik,
+                'no_tlp'                => $request->no_tlp,
+                'alamat'                => $request->alamat,
+                'role_id'               => 3,
+                'created_at'            => now(),
+                'remember_token'        => $request->_token,
+            ]);
+
+            if ($insertUser) {
+                DB::commit();
+                return redirect()->route('loginpencariankerja');
+            } else{
+                return redirect()->route('register')->with('failed', 'Gagal');
+            } 
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return $ex->getMessage();
+        }
+    }
     
     public function loginpencariankerja(Request $request)
     {
@@ -72,19 +115,17 @@ class HomeController extends Controller
     public function login_proses_users(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
-
-        $cek = users::where('name', $request->name)->where('password', $request->password)->first();
-        $role = RoleUser::where('user_id', $cek->id)->first();
+        
+        $cek = UsersPencaker::where('username', $request->username)->where('password', $request->password)->first();
 
         if ($cek) {
-            session()->put('name', $cek->name);
-            session()->put('id',$cek->id);
-            session()->put('email',$cek->email);
-            session()->put('role_id',$role->role_id);
-            return redirect()->route('users.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
+            session()->put('pencaker_name', $cek->name);
+            session()->put('pencaker_id',$cek->id);
+            session()->put('role_id',$cek->role_id);
+            return redirect()->route('users.home')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");
             return redirect()->route('loginpencariankerja')->with('failed', 'Gagal');
@@ -131,6 +172,7 @@ class HomeController extends Controller
             session()->put('id',$cek->id);
             session()->put('email',$cek->email);
             session()->put('role_id',$role->role_id);
+            session()->put('alamat',$role->alamat);
             return redirect()->route('admin.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");
