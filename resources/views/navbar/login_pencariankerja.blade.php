@@ -44,7 +44,7 @@
             </div>
             <div>
                 <label for="username" class="form-label">Username</label>
-                <input type="text" name="name" id="name" class="form-control">
+                <input type="text" name="username" id="username" class="form-control">
                 @error('name')
                     <small style="color: red">{{ $message }}</small>
                 @enderror

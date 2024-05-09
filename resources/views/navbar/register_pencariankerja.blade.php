@@ -105,35 +105,15 @@
     <div class="container">
         <div class="form-container">
             <img src="{{ asset('img/icon.png') }}" alt="Disnaker Logo" class="logo" style="max-height: 300px;">
-            <form method="POST" action="#">
+            <form action="{{ route('register-proses') }}" method="post">
                 @csrf
-                <input type="text" name="name" placeholder="Nama">
-                <input type="text" name="nik" placeholder="NIK">
-                <input type="password" name="password" placeholder="Password" autocomplete="off">
-                <input type="email" name="email" placeholder="Email">
-                <input type="text" name="No Hp" placeholder="No Hp">
-                <input type="text" name="Tempat Tanggal Lahir" placeholder="Tempat Tanggal Lahir">
-                <textarea id="alamat" name="alamat" placeholder="Alamat"></textarea>
-                <input type="text" name="akun media sosial" placeholder="Akun Media Sosial">
-
-                <label for="category">Jenis Kelamin:</label>
-                <select id="category" name="category">
-                    <option value="">--Please choose an option--</option>
-                    <option value="Cowo">Laki-Laki</option>
-                    <option value="Cewe">Perempuan</option>
-                </select>
-                <!-- Tambahkan kelas CSS pada label untuk pilihan default -->
-                <label for="category" class="select-label">Pendidikan Terakhir:</label>
-                <select id="category" name="category">
-                    <option value="" class="select-label">--Please choose an option--</option>
-                    <option value="SD">SD</option>
-                    <option value="SMP">SMP</option>
-                    <option value="SMK/SMA">SMK/SMA</option>
-                    <option value="KULIAH">S1, D3</option>
-                </select>
-
-                <textarea id="visi misi" name="visi misi" placeholder="Visi Misi"></textarea>
-
+                <input type="text" name="name" placeholder="Nama" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" autocomplete="off" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="nik" placeholder="NIK" pattern="[0-9]*" maxlength="16" title="Masukkan hanya angka dan maksimal 16 karakter" required>
+                <input type="text" name="no_tlp" pattern="[0-9]*" placeholder="No Hp" required>
+                <textarea id="alamat" name="alamat" placeholder="Alamat" required></textarea>
                 <button type="submit">Register</button>
             </form>
         </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin2\DashboardAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
 use App\Http\Controllers\users\DashboardController;
+use App\Http\Controllers\users\HomeController as UsersHomeController;
 use Illuminate\Support\Facades\Route;
 // Route::redirect('/home', '/admin');
 // Auth::routes(['register' => false]);
@@ -19,18 +20,19 @@ Route::post('/login-proses-admin', [HomeController::class, 'login_proses_admin']
 // login dan register perusahaan
 Route::get('/masukPerusahaan', 'HomeController@masukPerusahaan')->name('masukPerusahaan');
 Route::post('/masuk-proses-perusahaan', [HomeController::class, 'login_proses_perusahaan'])->name('masuk-proses-perusahaan');
-Route::get('/register', 'HomeController@register')->name('register');
+Route::get('/daftar', 'HomeController@daftar')->name('daftar');
 // end
 
 // login dan register pencari kerja
 Route::get('/loginpencariankerja', 'HomeController@loginpencariankerja')->name('loginpencariankerja');
 Route::post('/login-proses-users', [HomeController::class, 'login_proses_users'])->name('login-proses-users');
-Route::get('/daftar', 'HomeController@daftar')->name('daftar');
+Route::get('/register', 'HomeController@register')->name('register');
+Route::post('/register-proses', [HomeController::class, 'register_proses'])->name('register-proses');
 // end 
 
 // dashboard users
 Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.users'], function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('home', [UsersHomeController::class, 'index'])->name('home');
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 });
 
