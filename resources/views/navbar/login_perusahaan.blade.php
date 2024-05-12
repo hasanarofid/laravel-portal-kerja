@@ -44,8 +44,8 @@
             </div>
             <div>
                 <label for="username" class="form-label">Username</label>
-                <input type="text" name="name" id="name" class="form-control" required>
-                @error('name')
+                <input type="text" name="username" id="username" class="form-control" required>
+                @error('nama')
                     <small style="color: red">{{ $message }}</small>
                 @enderror
             </div>

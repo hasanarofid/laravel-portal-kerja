@@ -1,9 +1,9 @@
 @extends('layoutuser.index')
 @section('title')
-    SIKEREN | Home
+    SIKEREN | Dashboard
 @endsection
 @section('header')
-    Home
+    Dashboard
 @endsection
 @section('content')
 

@@ -61,15 +61,21 @@
 
         <header class="main-header">
             <!-- Logo -->
-            @if (session('role_id') == 3)
-                <a href="{{ route('users.home') }}" class="logo">
+            @if (session('role_id') == 1)
+                <a href="#" class="logo">
             @endif
-                    <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>STKO</b></span>
-                    <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><img src="{{ asset('img/logodisnaker.PNG') }}" class="card-img-top"
-                            style="position: relative;z-index: 1;"></span>
-                </a>
+            @if (session('role_id') == 2)
+                <a href="{{ route('perusahaan.dashboard') }}" class="logo">
+            @endif
+            @if (session('role_id') == 3)
+                <a href="{{ route('users.dashboard') }}" class="logo">
+            @endif
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>STKO</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><img src="{{ asset('img/logodisnaker.PNG') }}" class="card-img-top"
+                    style="position: relative;z-index: 1;"></span>
+            </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
@@ -84,6 +90,12 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image"
                                     alt="User Image">
+                                @if (session('role_id') == 1)
+                                    <span class="hidden-xs">{{ session('name') }}</span>
+                                @endif
+                                @if (session('role_id') == 2)
+                                    <span class="hidden-xs">{{ session('nama') }}</span>
+                                @endif
                                 @if (session('role_id') == 3)
                                     <span class="hidden-xs">{{ session('pencaker_name') }}</span>
                                 @endif
@@ -95,8 +107,14 @@
                                         alt="User Image">
 
                                     <p>
-                                        {{ session('pencaker_name') }}
+                                        @if (session('role_id') == 1)
+                                            {{ session('name') }}
+                                        @endif
+                                        @if (session('role_id') == 2)
+                                            {{ session('nama') }}
+                                        @endif
                                         @if (session('role_id') == 3)
+                                            {{ session('pencaker_name') }}
                                             <small>{{ session('alamat') }}</small>
                                         @endif
                                     </p>
@@ -105,12 +123,24 @@
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         @if (session('role_id') == 3)
-                                            <a href="{{ route('users.profil') }}" class="btn btn-default btn-flat">Profil</a>
+                                            <a href="{{ route('users.profil') }}"
+                                                class="btn btn-default btn-flat">Profil</a>
                                         @endif
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ route('users.logout') }}" class="btn btn-default btn-flat">Sign
-                                            out</a>
+                                        @if (session('role_id') == 1)
+                                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign
+                                                out</a>
+                                        @endif
+                                        @if (session('role_id') == 2)
+                                            <a href="{{ route('perusahaan.logout') }}"
+                                                class="btn btn-default btn-flat">Sign
+                                                out</a>
+                                        @endif
+                                        @if (session('role_id') == 3)
+                                            <a href="{{ route('users.logout') }}" class="btn btn-default btn-flat">Sign
+                                                out</a>
+                                        @endif
                                     </div>
                                 </li>
                             </ul>
@@ -146,11 +176,28 @@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 {{-- user --}}
+                @if (session('role_id') == 1)
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span></a></li>
+                    </ul>
+                @endif
+                @if (session('role_id') == 2)
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li><a href="{{ route('perusahaan.home') }}"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                        <li><a href="{{ route('perusahaan.dashboard') }}"><i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span></a></li>
+                    </ul>
+                @endif
                 @if (session('role_id') == 3)
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MAIN NAVIGATION</li>
                         <li><a href="{{ route('users.home') }}"><i class="fa fa-home"></i> <span>Home</span></a></li>
-                        <li><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="{{ route('users.dashboard') }}"><i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span></a></li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-user"></i> <span>Data User</span>
@@ -404,101 +451,110 @@
         $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- jQuery 3 -->
-    <script src="{{asset ('bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="{{asset ('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- Select2 -->
-    <script src="{{asset ('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- InputMask -->
-    <script src="{{asset ('plugins/input-mask/jquery.inputmask.js') }}"></script>
-    <script src="{{asset ('plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
-    <script src="{{asset ('plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+    <script src="{{ asset('plugins/input-mask/jquery.inputmask.js') }}"></script>
+    <script src="{{ asset('plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script src="{{ asset('plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
     <!-- date-range-picker -->
-    <script src="{{asset ('bower_components/moment/min/moment.min.js') }}"></script>
-    <script src="{{asset ('bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <!-- bootstrap datepicker -->
-    <script src="{{asset ('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <!-- bootstrap color picker -->
-    <script src="{{asset ('bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+    <script src="{{ asset('bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
     <!-- bootstrap time picker -->
-    <script src="{{asset ('plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+    <script src="{{ asset('plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
     <!-- SlimScroll -->
-    <script src="{{asset ('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <!-- iCheck 1.0.1 -->
-    <script src="{{asset ('plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="{{asset ('bower_components/fastclick/lib/fastclick.js') }}"></script>
+    <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{asset ('dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{asset ('dist/js/demo.js') }}"></script>
+    <script src="{{ asset('dist/js/demo.js') }}"></script>
     <script>
-        $(function () {
-          //Initialize Select2 Elements
-          $('.select2').select2()
-      
-          //Datemask dd/mm/yyyy
-          $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-          //Datemask2 mm/dd/yyyy
-          $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-          //Money Euro
-          $('[data-mask]').inputmask()
-      
-          //Date range picker
-          $('#reservation').daterangepicker()
-          //Date range picker with time picker
-          $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
-          //Date range as a button
-          $('#daterange-btn').daterangepicker(
-            {
-              ranges   : {
-                'Today'       : [moment(), moment()],
-                'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-                'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate  : moment()
-            },
-            function (start, end) {
-              $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-            }
-          )
-      
-          //Date picker
-          $('#datepicker').datepicker({
-            autoclose: true
-          })
-      
-          //iCheck for checkbox and radio inputs
-          $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass   : 'iradio_minimal-blue'
-          })
-          //Red color scheme for iCheck
-          $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-            checkboxClass: 'icheckbox_minimal-red',
-            radioClass   : 'iradio_minimal-red'
-          })
-          //Flat red color scheme for iCheck
-          $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass   : 'iradio_flat-green'
-          })
-      
-          //Colorpicker
-          $('.my-colorpicker1').colorpicker()
-          //color picker with addon
-          $('.my-colorpicker2').colorpicker()
-      
-          //Timepicker
-          $('.timepicker').timepicker({
-            showInputs: false
-          })
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', {
+                'placeholder': 'dd/mm/yyyy'
+            })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', {
+                'placeholder': 'mm/dd/yyyy'
+            })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                format: 'MM/DD/YYYY h:mm A'
+            })
+            //Date range as a button
+            $('#daterange-btn').daterangepicker({
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                            'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function(start, end) {
+                    $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                        'MMMM D, YYYY'))
+                }
+            )
+
+            //Date picker
+            $('#datepicker').datepicker({
+                autoclose: true
+            })
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            })
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            })
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            })
+
+            //Colorpicker
+            $('.my-colorpicker1').colorpicker()
+            //color picker with addon
+            $('.my-colorpicker2').colorpicker()
+
+            //Timepicker
+            $('.timepicker').timepicker({
+                showInputs: false
+            })
         })
-      </script>
+    </script>
 </body>
 
 </html>
