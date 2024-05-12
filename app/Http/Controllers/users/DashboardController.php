@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        // dd(session('name'));
         return view('users.dashboard');
     }
 }

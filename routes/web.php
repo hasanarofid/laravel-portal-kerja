@@ -33,19 +33,22 @@ Route::post('/register-proses', [HomeController::class, 'register_proses'])->nam
 
 // dashboard users
 Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.users'], function () {
-    Route::get('home', [UsersHomeController::class, 'index'])->name('home');
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('profil', [ProfilController::class, 'index'])->name('profil');
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 });
 
 // dashboard perusahaan
 Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 'auth.perusahaan'], function () {
+    Route::get('home', 'HomeController@index')->name('home');
     Route::get('dashboard', [DashboardPerusahaanController::class, 'index'])->name('dashboard');
     Route::get('logout', [HomeController::class, 'logoutPerusahaan'])->name('logout');
 });
 
 // dashboard admin
 Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth.admin'], function () {
+    Route::get('home', 'HomeController@index')->name('home');
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
     Route::get('logout', [HomeController::class, 'logoutAdmin'])->name('logout');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Location;
 use App\Job;
+use App\RegisterPerusahaan;
 use App\Roles;
 use App\RoleUser;
 use App\users;
@@ -125,7 +126,7 @@ class HomeController extends Controller
             session()->put('pencaker_name', $cek->name);
             session()->put('pencaker_id',$cek->id);
             session()->put('role_id',$cek->role_id);
-            return redirect()->route('users.home')->with('success', 'Selamat, Anda telah sukses masuk.');
+            return redirect()->route('users.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");
             return redirect()->route('loginpencariankerja')->with('failed', 'Gagal');
@@ -136,18 +137,17 @@ class HomeController extends Controller
     public function login_proses_perusahaan(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        $cek = users::where('name', $request->name)->where('password', $request->password)->first();
-        $role = RoleUser::where('user_id', $cek->id)->first();
+        $cek = RegisterPerusahaan::where('username', $request->username)->where('password', $request->password)->first();
 
         if ($cek) {
-            session()->put('name', $cek->name);
+            session()->put('nama', $cek->nama);
             session()->put('id',$cek->id);
             session()->put('email',$cek->email);
-            session()->put('role_id',$role->role_id);
+            session()->put('role_id',$cek->role_id);
             return redirect()->route('perusahaan.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");
@@ -158,7 +158,6 @@ class HomeController extends Controller
 
     public function login_proses_admin(Request $request)
     {
-        // dd('masuk');
         $request->validate([
             'name' => 'required',
             'password' => 'required',
