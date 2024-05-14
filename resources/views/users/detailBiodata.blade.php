@@ -23,7 +23,7 @@
                     <label for="nama">Nama</label>
                     <input value="{{ $modPencariKerja->nama }}" name="nama" class="form-control" id="nama"
                         placeholder="Nama Lengkap" required autocomplete="off">
-                    <input value="{{ $modPencariKerja->pencari_kerja_id }}" name="pencari_kerja_id" class="form-control" hidden>
+                    <input type="hidden" value="{{ $modPencariKerja->pencari_kerja_id }}" name="pencari_kerja_id" class="form-control" hidden>
                 </div>
                 <div class="row">
                     <div class="col-md-6 px-3"> <!-- Menambahkan padding kiri dan kanan di sini -->
