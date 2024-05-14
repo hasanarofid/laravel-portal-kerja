@@ -103,6 +103,51 @@ class HomeController extends Controller
         return view('navbar.register_perusahaan');
     } 
     
+    public function register_perusahaan(Request $request)
+    {
+        // $request->validate([
+        //     'name' => 'required',
+        //     'usernameAdmin' => 'required',
+        //     'txtpassword' => 'required',
+        //     'email' => 'required',
+        //     'noPerusahaan' => 'required',
+        //     'alamat' => 'required',
+        //     'bidangUsaha' => 'required',
+        //     'keterangan' => 'required',
+        //     'kodePerusahaan' => 'required',
+        // ]);
+        
+        // dd( $request->txtpassword);
+        DB::beginTransaction();
+        try {
+            $insertUser = RegisterPerusahaan::create([
+                'nama'                  => $request->name,
+                'username'              => $request->usernameAdmin,
+                'password'              => $request->txtpassword,
+                'email'                 => $request->email,
+                'no_perusahaan'         => $request->noPerusahaan,
+                'alamat'                => $request->alamat,
+                'bidang_usaha'          => $request->bidangUsaha,
+                'keterangan'            => $request->keterangan,
+                'kode_perusahaan'       => $request->kodePerusahaan,
+                'urlPerusahaan'         => $request->urlPerusahaan,
+                'role_id'               => 2,
+                'created_at'            => now(),
+                'remember_token'        => $request->_token,
+            ]);
+
+            if ($insertUser) {
+                DB::commit();
+                return redirect()->route('masukPerusahaan');
+            } else{
+                return redirect()->route('daftar')->with('failed', 'Gagal');
+            } 
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return $ex->getMessage();
+        }
+    }
+
     public function masukPerusahaan(Request $request)
     {
         return view('navbar.login_perusahaan');

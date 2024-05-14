@@ -19,6 +19,7 @@ class RegisterPerusahaan extends Model
         'alamat',
         'bidang_usaha',
         'url_perusahaan',
+        'password',
         'keterangan',
         'kode_perusahaan',
         'role_id',
