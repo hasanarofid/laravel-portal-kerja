@@ -37,12 +37,16 @@ Route::post('/register-proses', [HomeController::class, 'register_proses'])->nam
 // dashboard users
 Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.users'], function () {
     Route::get('home', 'HomeController@index')->name('home');
+    // dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // end dashboard
+
     // biodata
     Route::get('biodata', [BiodataController::class, 'index'])->name('biodata');
     Route::post('simpan-biodata', [BiodataController::class, 'simpan_biodata'])->name('simpan-biodata');
     Route::post('hapusdata', [BiodataController::class, 'hapusdata'])->name('hapusdata');
     // end biodata
+ 
     Route::get('profil', [ProfilController::class, 'index'])->name('profil');
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 });
