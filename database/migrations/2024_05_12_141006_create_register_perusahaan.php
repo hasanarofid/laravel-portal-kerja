@@ -22,7 +22,7 @@ class CreateRegisterPerusahaan extends Migration
             $table->string('no_perusahaan');
             $table->string('alamat');
             $table->string('bidang_usaha');
-            $table->string('url_perusahaan');
+            $table->string('url_perusahaan')->nullable();
             $table->string('keterangan');
             $table->integer('kode_perusahaan');
             $table->integer('role_id');

@@ -23,6 +23,8 @@ Route::post('/login-proses-admin', [HomeController::class, 'login_proses_admin']
 Route::get('/masukPerusahaan', 'HomeController@masukPerusahaan')->name('masukPerusahaan');
 Route::post('/masuk-proses-perusahaan', [HomeController::class, 'login_proses_perusahaan'])->name('masuk-proses-perusahaan');
 Route::get('/daftar', 'HomeController@daftar')->name('daftar');
+Route::post('/register-perusahaan', [HomeController::class, 'register_perusahaan'])->name('register-perusahaan');
+
 // end
 
 // login dan register pencari kerja

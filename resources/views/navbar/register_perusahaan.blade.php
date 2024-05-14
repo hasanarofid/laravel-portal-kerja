@@ -75,29 +75,29 @@
     <div class="container ">
         <div class="form-container ">
             <img src="{{ asset('img/icon.png') }}" alt="Disnaker Logo" class="logo" style="max-height: 300px;">
-            <form method="POST" action="#">
+            <form method="POST" action="{{ route('register-perusahaan') }}">
                 @csrf
                 <input type="text" id="name" name="name" placeholder="Nama Perusahaan">
 
-                <input type="text" id="UsernameAdmin" name="username admin" placeholder="Username Admin">
+                <input type="text" id="usernameAdmin" name="usernameAdmin" placeholder="Username Admin">
 
-                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="password" id="txtpassword" name="txtpassword" placeholder="Password">
 
                 <input type="email" id="email" name="email" placeholder="Email perusahaan">
 
-                <input type="text" id="NoHPAdmin" name="No Hp Admin" placeholder="No HP Admin">
+                <!-- <input type="text" id="NoHPAdmin" name="No Hp Admin" placeholder="No HP Admin"> -->
 
-                <input type="text" id="NoHPPerusahaan" name="No Hp Perusahaan" placeholder="No HP Perusahaan">
+                <input type="text" id="noPerusahaan" name="noPerusahaan" placeholder="No HP Perusahaan">
 
-                <textarea id="Alamat" name="alamat" placeholder="Alamat"></textarea>
+                <textarea id="alamat" name="alamat" placeholder="Alamat"></textarea>
 
-                <input type="text" id="BidangUsaha" name="Bidang Usaha" placeholder="Bidang Usaha">
+                <input type="text" id="bidangUsaha" name="bidangUsaha" placeholder="Bidang Usaha">
 
-                <input type="text" id="UrlPerusahaan" name="Url Perusahaan" placeholder="Url Perusahaan">
+                <input type="text" id="urlPerusahaan" name="urlPerusahaan" placeholder="Url Perusahaan">
 
-                <textarea id="Keterangan" name="Keterangan" placeholder="Keterangan"></textarea>
+                <textarea id="keterangan" name="keterangan" placeholder="Keterangan"></textarea>
 
-                <input type="text" name="Kode Perusahaan" placeholder="Kode Perusahaan">
+                <input type="text" id="kodePerusahaan" name="kodePerusahaan" placeholder="Kode Perusahaan">
 
                 <button type="submit">Register</button>
             </form>
