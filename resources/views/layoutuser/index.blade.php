@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="_token" content="{{ csrf_token() }}" />
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
@@ -206,7 +207,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Biodata</a></li>
+                                <li><a href="{{ route('users.biodata') }}"><i class="fa fa-circle-o"></i> Biodata</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> CV & Keahlian</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> Lampiran Kualitas</a></li>
                             </ul>
@@ -479,6 +480,7 @@
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -555,6 +557,7 @@
             })
         })
     </script>
+    @yield('js')
 </body>
 
 </html>
