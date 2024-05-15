@@ -208,7 +208,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('users.biodata') }}"><i class="fa fa-circle-o"></i> Biodata</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> CV & Keahlian</a></li>
+                                <li><a href="{{ route('users.cvdankeahlian') }}"><i class="fa fa-circle-o"></i> CV & Keahlian</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> Lampiran Kualitas</a></li>
                             </ul>
                         </li>

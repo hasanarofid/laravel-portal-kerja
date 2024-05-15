@@ -16,9 +16,9 @@ class BiodataController extends Controller
         $modPencariKerja = PencariKerja::where('users_pencaker_id', session('pencaker_id'))->first();
         if (!empty($modPencariKerja->pencari_kerja_id)) {
             $modKeterampilan = Keterampilan::where('pencari_kerja_id', $modPencariKerja->pencari_kerja_id)->get();
-            return view('users.biodata', compact('modPencariKerja', 'modKeterampilan'));
+            return view('users.biodata.biodata', compact('modPencariKerja', 'modKeterampilan'));
         }else{
-            return view('users.biodata', compact('modPencariKerja'));
+            return view('users.biodata.biodata', compact('modPencariKerja'));
         }
     }
 
@@ -68,6 +68,7 @@ class BiodataController extends Controller
                 $updatePencaker->tinggi_badan = $request->tinggi_badan;
                 $updatePencaker->berat_badan = $request->berat_badan;
                 $updatePencaker->alamat = $request->alamat;
+                $updatePencaker->keterangan = $request->keterangan;
                 $updatePencaker->provinsi_nama = $request->provinsi;
                 $updatePencaker->kota_nama = $request->kota_kabupaten;
                 $updatePencaker->kecamatan_nama = $request->Kecamatan;
@@ -81,16 +82,20 @@ class BiodataController extends Controller
 
                 if ($updatePencaker->save()) {
 
-                    // Hapus keterampilan lama
-                    Keterampilan::where('pencari_kerja_id', $request->pencari_kerja_id)->delete();
-
-                    // Tambahkan keterampilan baru
                     foreach ($request->ketrampilan as $value) {
-                        Keterampilan::create([
-                            'pencari_kerja_id'   => $updatePencaker->pencari_kerja_id,
-                            'nama_keterampilan'  => $value['nama_keterampilan'],
-                            'keterangan'         => $value['keterangan'],
-                        ]);
+                        if (!empty($value['keterampilan_id'])) {
+                            $updateKeterampilan = Keterampilan::findOrFail($value['keterampilan_id']);
+                            $updateKeterampilan->pencari_kerja_id = $updatePencaker->pencari_kerja_id;
+                            $updateKeterampilan->nama_keterampilan = $value['nama_keterampilan'];
+                            $updateKeterampilan->keterangan = $value['keterangan'];
+                            $updateKeterampilan->save();
+                        }else{
+                            Keterampilan::create([
+                                'pencari_kerja_id'   => $updatePencaker->pencari_kerja_id,
+                                'nama_keterampilan'  => $value['nama_keterampilan'],
+                                'keterangan'         => $value['keterangan'],
+                            ]);
+                        }
                     }
 
                     DB::commit();
@@ -125,6 +130,7 @@ class BiodataController extends Controller
                     'kota_nama'                    => $request->kota_kabupaten,
                     'kecamatan_nama'               => $request->Kecamatan,
                     'kelurahan_nama'               => $request->kelurahan,
+                    'keterangan'                   => $request->keterangan,
                     'rw'                           => $request->rw,
                     'rt'                           => $request->rt,
                     'jml_anak'                     => $request->jml_anak,

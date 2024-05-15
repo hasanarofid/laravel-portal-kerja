@@ -23,7 +23,8 @@
                     <label for="nama">Nama</label>
                     <input value="{{ $modPencariKerja->nama }}" name="nama" class="form-control" id="nama"
                         placeholder="Nama Lengkap" required autocomplete="off">
-                    <input type="hidden" value="{{ $modPencariKerja->pencari_kerja_id }}" name="pencari_kerja_id" class="form-control" hidden>
+                    <input type="hidden" value="{{ $modPencariKerja->pencari_kerja_id }}" name="pencari_kerja_id"
+                        class="form-control" hidden>
                 </div>
                 <div class="row">
                     <div class="col-md-6 px-3"> <!-- Menambahkan padding kiri dan kanan di sini -->
@@ -241,6 +242,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="nama">Keterangan</label>
+                    <textarea name="keterangan" class="form-control" rows="3" placeholder="Ketrangan. . . . ">{{ $modPencariKerja->keterangan }}</textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -261,12 +266,17 @@
                     </thead>
                     <tbody>
                         @foreach ($modKeterampilan as $key => $value)
+                        {{-- @dd($value) --}}
                             <tr>
-                                <td style="text-align: center; vertical-align: middle;">{{ $key + 1 }}</td>
+                                <td id="no_urut" style="text-align: center; vertical-align: middle;">
+                                    {{ $key + 1 }}
+                                </td>
                                 <td>
                                     <input value="{{ $value['nama_keterampilan'] }}"
                                         name="ketrampilan[{{ $key + 1 }}][nama_keterampilan]"
                                         class="form-control" placeholder="Nama Keterampilan">
+                                    <input type="hidden" value="{{ $value['keterampilan_id'] }}"
+                                        name="ketrampilan[{{ $key + 1 }}][keterampilan_id]" class="form-control">
                                 </td>
                                 <td>
                                     <input value="{{ $value['keterangan'] }}"

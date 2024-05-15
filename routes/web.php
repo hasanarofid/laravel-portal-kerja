@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin2\DashboardAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
 use App\Http\Controllers\users\BiodataController;
+use App\Http\Controllers\users\CvdanKeahlianController;
 use App\Http\Controllers\users\DashboardController;
 use App\Http\Controllers\users\HomeController as UsersHomeController;
 use App\Http\Controllers\users\ProfilController;
@@ -46,6 +47,10 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
     Route::post('simpan-biodata', [BiodataController::class, 'simpan_biodata'])->name('simpan-biodata');
     Route::post('hapusdata', [BiodataController::class, 'hapusdata'])->name('hapusdata');
     // end biodata
+
+    // Cv & keahlian
+    Route::get('cvdankeahlian', [CvdanKeahlianController::class, 'index'])->name('cvdankeahlian');
+    // end Cv & keahlian
  
     Route::get('profil', [ProfilController::class, 'index'])->name('profil');
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
