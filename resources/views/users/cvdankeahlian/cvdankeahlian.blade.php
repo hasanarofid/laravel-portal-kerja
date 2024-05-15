@@ -1,65 +1,73 @@
 @extends('layoutuser.index')
 @section('title')
-    SIKEREN | Biodata
+    SIKEREN | CV & Keahlian
 @endsection
 @section('header')
-    Biodata
+    CV & Keahlian
 @endsection
 <style>
-    .custom-height {
-        height: 320px;
-        /* Sesuaikan tinggi sesuai kebutuhan Anda */
-    }
-
-    .profile-picture {
-        margin: auto;
-        margin-top: 20px;
-        width: 200px;
-        height: 200px;
-        border-radius: 70%;
-        overflow: hidden;
-    }
-
-    .profile-picture img {
-        width: 100%;
-        height: 100%;
-    }
-
     .file-upload {
         position: relative;
-        overflow: hidden;
         display: inline-block;
+        cursor: pointer;
+        margin-top: 15px;
     }
 
-    .input-file {
+    .file-upload .input-file {
         position: absolute;
-        font-size: 100px;
-        right: 0;
         top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         opacity: 0;
         cursor: pointer;
     }
 
-    .file-upload span {
-        display: inline-block;
-        padding: 6px 12px;
-        cursor: pointer;
+    .file-upload .upload-icon {
+        font-size: 22px;
+        /* color: #007bff; */
     }
 
-    .file-upload i {
-        margin-top: 10px;
-        margin-right: 5px;
+    .box.primary {
+        text-align: center;
+        padding: 20px;
+        border: 2px dashed #007bff;
+    }
+
+    .custom-height {
+        height: 60px;
+        /* Sesuaikan tinggi sesuai kebutuhan Anda */
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table {
+        width: 100%;
+        min-width: 1900px;
+        /* Adjust this value based on the content */
+    }
+
+    .table th,
+    .table td {
+        min-width: 10px;
+        /* Adjust this value based on the content */
+    }
+
+    .table select,
+    .table input,
+    .table textarea {
+        width: 100%;
     }
 </style>
 @section('content')
-    @if (!empty($modPencariKerja))
-        @include('users.detailBiodata')
-    @else
-        @include('users.transaksiBiodata')
-    @endif
+    @include('users.cvdankeahlian.transaksicv')
+    
 @endsection
 @section('js')
-    @include('users.jsFunction')
+    @include('users.cvdankeahlian.jsFunction')
 @endsection
 @if ($errors->any())
     <script stype="text/javascript">

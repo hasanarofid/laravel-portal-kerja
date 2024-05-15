@@ -186,6 +186,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="nama">Keterangan</label>
+                    <textarea name="keterangan" class="form-control" rows="3" placeholder="Ketrangan. . . . "></textarea>
+                </div>
             </div>
         </div>
     </div>
