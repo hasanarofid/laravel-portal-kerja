@@ -50,6 +50,7 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
 
     // Cv & keahlian
     Route::get('cvdankeahlian', [CvdanKeahlianController::class, 'index'])->name('cvdankeahlian');
+    Route::post('simpan-cvdankeahlian', [CvdanKeahlianController::class, 'simpan_cvdankeahlian'])->name('simpan-cvdankeahlian');
     // end Cv & keahlian
  
     Route::get('profil', [ProfilController::class, 'index'])->name('profil');
