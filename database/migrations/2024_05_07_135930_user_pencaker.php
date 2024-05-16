@@ -32,6 +32,10 @@ class UserPencaker extends Migration
 
             $table->integer('role_id');
 
+            $table->string('gender')->nullable();
+
+            $table->string('foto')->nullable();
+
             $table->string('remember_token')->nullable();
 
             $table->timestamps();
