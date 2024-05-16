@@ -51,6 +51,13 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
     // Cv & keahlian
     Route::get('cvdankeahlian', [CvdanKeahlianController::class, 'index'])->name('cvdankeahlian');
     Route::post('simpan-cvdankeahlian', [CvdanKeahlianController::class, 'simpan_cvdankeahlian'])->name('simpan-cvdankeahlian');
+    Route::get('download/{filename}', [CvdanKeahlianController::class, 'download'])->name('download-file');
+    Route::post('hapusdataRiwayat', [CvdanKeahlianController::class, 'hapusdataRiwayat'])->name('hapusdataRiwayat');
+    Route::post('hapusdataSertifikat', [CvdanKeahlianController::class, 'hapusdataSertifikat'])->name('hapusdataSertifikat');
+    Route::post('hapusdataPelatihan', [CvdanKeahlianController::class, 'hapusdataPelatihan'])->name('hapusdataPelatihan');
+    Route::post('hapusdataBahasa', [CvdanKeahlianController::class, 'hapusdataBahasa'])->name('hapusdataBahasa');
+    Route::post('hapusdataPengalaman', [CvdanKeahlianController::class, 'hapusdataPengalaman'])->name('hapusdataPengalaman');
+    Route::post('hapusdataWeb', [CvdanKeahlianController::class, 'hapusdataWeb'])->name('hapusdataWeb');
     // end Cv & keahlian
  
     Route::get('profil', [ProfilController::class, 'index'])->name('profil');

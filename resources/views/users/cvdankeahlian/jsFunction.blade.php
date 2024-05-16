@@ -10,10 +10,8 @@
             // Membuat elemen ikon Font Awesome
             const pdfIcon = document.createElement('i');
             pdfIcon.className = 'fa fa-file-pdf-o'; // Menggunakan kelas Font Awesome untuk ikon PDF
-            pdfIcon.style.marginRight = '10px'; // Opsional: Tambahkan sedikit jarak antara ikon dan teks
             pdfIcon.style.fontSize = '50px'; // Mengatur ukuran ikon dengan CSS inline
             pdfIcon.style.color = 'red'; // Mengatur ukuran ikon dengan CSS inline
-            pdfIcon.style.marginRight = '10px'; // Opsional: Tambahkan sedikit jarak antara ikon dan teks
 
             // Membuat elemen teks nama file
             const fileName = document.createElement('span');
@@ -355,6 +353,348 @@
         this.value = this.value.replace(/[^0-9.,]/g, '');
         this.value = this.value.replace(/(\..*)\./g, '$1').replace(/(,.*)\,/g, '$1');
     });
+
+    function deleteRowTersimpanRiwayat(obj, val, val2) {
+        var index = obj.value;
+        // Tampilkan dialog konfirmasi menggunakan SweetAlert
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus data?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Membuat permintaan AJAX ke server
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ Route('users.hapusdataRiwayat') }}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                    },
+                    data: {
+                        riwayatpendidikan_id: val,
+                        pencari_kerja_id: val2
+                    },
+                    success: function(response) {
+                        // Hapus baris dari DOM jika penghapusan berhasil
+                        Swal.close();
+                        Swal.fire({
+                            text: "Data sukses Di Hapus",
+                            icon: "success",
+                            timer: 600,
+                            buttonsStyling: false,
+                            confirmButtonText: "Selesai",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then(function(result) {
+                            // Redirect ke action 'index' pada controller 'InformasiJumlahKasusRSJejaringController'
+                            if (response.message == 'BERHASIL') {
+                                $(obj).parents("#table-riwayat > tbody > tr").detach();
+                                renameInputRow($('#table-riwayat'));
+                            }
+                            if (response.count == 1) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error deleting row:", error);
+                    }
+                });
+            } else {
+                console.log("Deletion canceled!");
+            }
+        });
+    }
+
+    function deleteRowTersimpanSertifikat(obj, val, val2) {
+        var index = obj.value;
+        // Tampilkan dialog konfirmasi menggunakan SweetAlert
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus data?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Membuat permintaan AJAX ke server
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ Route('users.hapusdataSertifikat') }}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                    },
+                    data: {
+                        sertifikatpendidikan_id: val,
+                        pencari_kerja_id: val2
+                    },
+                    success: function(response) {
+                        // Hapus baris dari DOM jika penghapusan berhasil
+                        Swal.close();
+                        Swal.fire({
+                            text: "Data sukses Di Hapus",
+                            icon: "success",
+                            timer: 600,
+                            buttonsStyling: false,
+                            confirmButtonText: "Selesai",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then(function(result) {
+                            // Redirect ke action 'index' pada controller 'InformasiJumlahKasusRSJejaringController'
+                            if (response.message == 'BERHASIL') {
+                                $(obj).parents("#table-sertifikat > tbody > tr").detach();
+                                renameInputRow($('#table-sertifikat'));
+                            }
+                            if (response.count == 1) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error deleting row:", error);
+                    }
+                });
+            } else {
+                console.log("Deletion canceled!");
+            }
+        });
+    }
+
+    function deleteRowTersimpanPelatihan(obj, val, val2) {
+        var index = obj.value;
+        // Tampilkan dialog konfirmasi menggunakan SweetAlert
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus data?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Membuat permintaan AJAX ke server
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ Route('users.hapusdataPelatihan') }}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                    },
+                    data: {
+                        pelatihanpendidikan_id: val,
+                        pencari_kerja_id: val2
+                    },
+                    success: function(response) {
+                        // Hapus baris dari DOM jika penghapusan berhasil
+                        Swal.close();
+                        Swal.fire({
+                            text: "Data sukses Di Hapus",
+                            icon: "success",
+                            timer: 600,
+                            buttonsStyling: false,
+                            confirmButtonText: "Selesai",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then(function(result) {
+                            // Redirect ke action 'index' pada controller 'InformasiJumlahKasusRSJejaringController'
+                            if (response.message == 'BERHASIL') {
+                                $(obj).parents("#table-pelatihan > tbody > tr").detach();
+                                renameInputRow($('#table-pelatihan'));
+                            }
+                            if (response.count == 1) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error deleting row:", error);
+                    }
+                });
+            } else {
+                console.log("Deletion canceled!");
+            }
+        });
+    }
+
+    function deleteRowTersimpanBahasa(obj, val, val2) {
+        var index = obj.value;
+        // Tampilkan dialog konfirmasi menggunakan SweetAlert
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus data?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Membuat permintaan AJAX ke server
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ Route('users.hapusdataBahasa') }}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                    },
+                    data: {
+                        bahasa_dikuasai_id: val,
+                        pencari_kerja_id: val2
+                    },
+                    success: function(response) {
+                        // Hapus baris dari DOM jika penghapusan berhasil
+                        Swal.close();
+                        Swal.fire({
+                            text: "Data sukses Di Hapus",
+                            icon: "success",
+                            timer: 600,
+                            buttonsStyling: false,
+                            confirmButtonText: "Selesai",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then(function(result) {
+                            // Redirect ke action 'index' pada controller 'InformasiJumlahKasusRSJejaringController'
+                            if (response.message == 'BERHASIL') {
+                                $(obj).parents("#table-bahasa > tbody > tr").detach();
+                                renameInputRow($('#table-bahasa'));
+                            }
+                            if (response.count == 1) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error deleting row:", error);
+                    }
+                });
+            } else {
+                console.log("Deletion canceled!");
+            }
+        });
+    }
+
+    function deleteRowTersimpanPengalamanKerja(obj, val, val2) {
+        var index = obj.value;
+        // Tampilkan dialog konfirmasi menggunakan SweetAlert
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus data?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Membuat permintaan AJAX ke server
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ Route('users.hapusdataPengalaman') }}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                    },
+                    data: {
+                        pengalaman_kerja_id: val,
+                        pencari_kerja_id: val2
+                    },
+                    success: function(response) {
+                        // Hapus baris dari DOM jika penghapusan berhasil
+                        Swal.close();
+                        Swal.fire({
+                            text: "Data sukses Di Hapus",
+                            icon: "success",
+                            timer: 600,
+                            buttonsStyling: false,
+                            confirmButtonText: "Selesai",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then(function(result) {
+                            // Redirect ke action 'index' pada controller 'InformasiJumlahKasusRSJejaringController'
+                            if (response.message == 'BERHASIL') {
+                                $(obj).parents("#table-pengalaman-kerja > tbody > tr").detach();
+                                renameInputRow($('#table-pengalaman-kerja'));
+                            }
+                            if (response.count == 1) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error deleting row:", error);
+                    }
+                });
+            } else {
+                console.log("Deletion canceled!");
+            }
+        });
+    }
+
+    function deleteRowTersimpanWebPribadi(obj, val, val2) {
+        var index = obj.value;
+        // Tampilkan dialog konfirmasi menggunakan SweetAlert
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin menghapus data?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Membuat permintaan AJAX ke server
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ Route('users.hapusdataWeb') }}",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                    },
+                    data: {
+                        webpribadi_id: val,
+                        pencari_kerja_id: val2
+                    },
+                    success: function(response) {
+                        // Hapus baris dari DOM jika penghapusan berhasil
+                        Swal.close();
+                        Swal.fire({
+                            text: "Data sukses Di Hapus",
+                            icon: "success",
+                            timer: 600,
+                            buttonsStyling: false,
+                            confirmButtonText: "Selesai",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then(function(result) {
+                            // Redirect ke action 'index' pada controller 'InformasiJumlahKasusRSJejaringController'
+                            if (response.message == 'BERHASIL') {
+                                $(obj).parents("#table-webpribadi > tbody > tr").detach();
+                                renameInputRow($('#table-webpribadi'));
+                            }
+                            if (response.count == 1) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error deleting row:", error);
+                    }
+                });
+            } else {
+                console.log("Deletion canceled!");
+            }
+        });
+    }
 
     /**
      * rename input row table

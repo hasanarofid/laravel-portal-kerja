@@ -118,9 +118,7 @@
                                 renameInputRow($('#table-keterampilan'));
                             }
                             if (response.count == 1) {
-                                setTimeout(() => {
-                                    location.reload();
-                                }, 5000);
+                                location.reload();
                             }
                         });
                     },
