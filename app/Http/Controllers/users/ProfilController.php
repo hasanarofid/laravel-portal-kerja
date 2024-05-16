@@ -49,7 +49,7 @@ class ProfilController extends Controller
 
             if ($updateProfil->save()) {
                 DB::commit();
-
+                session()->put('foto_pencaker', $updateProfil->foto);
                 return redirect()->route('users.profil')->with('success', 'Selamat, Data Berhasil Di Simpan.');
             } else {
                 session()->flash("error", "Harap coba lagi.");
