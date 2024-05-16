@@ -171,6 +171,7 @@ class HomeController extends Controller
             session()->put('pencaker_name', $cek->name);
             session()->put('pencaker_id',$cek->id);
             session()->put('role_id',$cek->role_id);
+            session()->put('foto_pencaker',$cek->foto);
             return redirect()->route('users.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");

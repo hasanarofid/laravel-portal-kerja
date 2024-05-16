@@ -89,24 +89,49 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image"
-                                    alt="User Image">
                                 @if (session('role_id') == 1)
+                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image"
+                                        alt="User Image">
                                     <span class="hidden-xs">{{ session('name') }}</span>
                                 @endif
                                 @if (session('role_id') == 2)
+                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image"
+                                        alt="User Image">
                                     <span class="hidden-xs">{{ session('nama') }}</span>
                                 @endif
                                 @if (session('role_id') == 3)
+                                    @if (session('foto_pencaker') == null)
+                                        <img src="{{ asset('dist/img/avatar.png') }}" class="user-image"
+                                            alt="User Image">
+                                    @else
+                                        <img src="{{ asset('fotoProfil/' . session('foto_pencaker')) }}"
+                                            class="user-image" alt="User Image">
+                                    @endif
                                     <span class="hidden-xs">{{ session('pencaker_name') }}</span>
                                 @endif
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle"
-                                        alt="User Image">
-
+                                    @if (session('role_id') == 1)
+                                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle"
+                                            alt="User Image">
+                                    @endif
+                                    @if (session('role_id') == 2)
+                                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle"
+                                            alt="User Image">
+                                    @endif
+                                    @if (session('role_id') == 3)
+                                        @if (session('foto_pencaker') == null)
+                                            <img src="{{ asset('dist/img/avatar.png') }}" class="user-image"
+                                                alt="User Image">
+                                        @else
+                                            <img src="{{ asset('fotoProfil/' . session('foto_pencaker')) }}"
+                                                >
+                                        @endif
+                                        <small>{{ session('alamat') }}</small>
+                                    @endif
+                                    
                                     <p>
                                         @if (session('role_id') == 1)
                                             {{ session('name') }}
@@ -130,7 +155,8 @@
                                     </div>
                                     <div class="pull-right">
                                         @if (session('role_id') == 1)
-                                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign
+                                            <a href="{{ route('admin.logout') }}"
+                                                class="btn btn-default btn-flat">Sign
                                                 out</a>
                                         @endif
                                         @if (session('role_id') == 2)
@@ -139,7 +165,8 @@
                                                 out</a>
                                         @endif
                                         @if (session('role_id') == 3)
-                                            <a href="{{ route('users.logout') }}" class="btn btn-default btn-flat">Sign
+                                            <a href="{{ route('users.logout') }}"
+                                                class="btn btn-default btn-flat">Sign
                                                 out</a>
                                         @endif
                                     </div>
@@ -188,7 +215,8 @@
                 @if (session('role_id') == 2)
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li><a href="{{ route('perusahaan.home') }}"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                        <li><a href="{{ route('perusahaan.home') }}"><i class="fa fa-home"></i> <span>Home</span></a>
+                        </li>
                         <li><a href="{{ route('perusahaan.dashboard') }}"><i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span></a></li>
                     </ul>
@@ -207,8 +235,10 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="{{ route('users.biodata') }}"><i class="fa fa-circle-o"></i> Biodata</a></li>
-                                <li><a href="{{ route('users.cvdankeahlian') }}"><i class="fa fa-circle-o"></i> CV & Keahlian</a></li>
+                                <li><a href="{{ route('users.biodata') }}"><i class="fa fa-circle-o"></i> Biodata</a>
+                                </li>
+                                <li><a href="{{ route('users.cvdankeahlian') }}"><i class="fa fa-circle-o"></i> CV &
+                                        Keahlian</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> Lampiran Kualitas</a></li>
                             </ul>
                         </li>

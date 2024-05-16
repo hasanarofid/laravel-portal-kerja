@@ -20,6 +20,8 @@ class UsersPencaker extends Model
         'no_tlp',
         'alamat',
         'role_id',
+        'foto',
+        'gender',
         'created_at',
     ];
 }
