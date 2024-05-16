@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Keterampilan;
 use App\PencariKerja;
 use App\UsersPencaker;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,6 +42,8 @@ class BiodataController extends Controller
             if (!empty($request->pencari_kerja_id)) {
 
                 $updatePencaker = PencariKerja::findOrFail($request->pencari_kerja_id);
+                $dateString = $request->tgl_lahir;
+                $tgl_lahir = DateTime::createFromFormat('d/m/Y', $dateString);
 
                 if ($request->hasFile('foto')) {
                     if ($updatePencaker->foto && file_exists(public_path('fotobiodata/' . $updatePencaker->foto))) {
@@ -60,7 +63,7 @@ class BiodataController extends Controller
                     $updatePencaker->foto = $filename;
                 }
                 $updatePencaker->tempat_lahir = $request->tempat_lahir;
-                $updatePencaker->tgl_lahir = date('Y-m-d', strtotime($request->tgl_lahir));
+                $updatePencaker->tgl_lahir = $tgl_lahir->format('Y-m-d');
                 $updatePencaker->gender = $request->jeniskelamin;
                 $updatePencaker->agama = $request->agama;
                 $updatePencaker->status_kawin = $request->status_kawin;
@@ -113,12 +116,14 @@ class BiodataController extends Controller
                     // Menyimpan file 
                     $request->foto->move(public_path('fotobiodata'), $filename);
                 }
+                $dateString = $request->tgl_lahir;
+                $tgl_lahir = DateTime::createFromFormat('d/m/Y', $dateString);
                 $insertPencaker = PencariKerja::create([
                     'users_pencaker_id'            => session('pencaker_id'),
                     'nama'                         => $request->nama,
                     'foto'                         => $filename,
-                    'tempat_lahir'                 => date('Y-m-d', strtotime($request->tempat_lahir)),
-                    'tgl_lahir'                    => date('Y-m-d', strtotime($request->tgl_lahir)),
+                    'tempat_lahir'                 => $request->tempat_lahir,
+                    'tgl_lahir'                    => $tgl_lahir->format('Y-m-d'),
                     'gender'                       => $request->jeniskelamin,
                     'agama'                        => $request->agama,
                     'status_kawin'                 => $request->status_kawin,
