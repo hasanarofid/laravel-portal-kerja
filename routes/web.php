@@ -60,8 +60,11 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
     Route::post('hapusdataWeb', [CvdanKeahlianController::class, 'hapusdataWeb'])->name('hapusdataWeb');
     // end Cv & keahlian
  
+    // profil
     Route::get('profil', [ProfilController::class, 'index'])->name('profil');
+    Route::post('simpan-profil', [ProfilController::class, 'simpan_profil'])->name('simpan-profil');
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
+    // end profil
 });
 
 // dashboard perusahaan
