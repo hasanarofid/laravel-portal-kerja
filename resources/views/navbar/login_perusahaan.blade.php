@@ -66,7 +66,7 @@
                 <label class="input-group-text">
                     <input type="checkbox" onclick="showPassword()"> Show Password
                 </label>
-                <a href="forgot">Lupa Password</a>
+                <a href="{{ url('/LupasPasswordPerusahaan') }}">Lupa Password</a>
 
             </div>
             <div class="text-center">
