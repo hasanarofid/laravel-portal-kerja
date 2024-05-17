@@ -7,6 +7,7 @@ use App\Http\Controllers\users\BiodataController;
 use App\Http\Controllers\users\CvdanKeahlianController;
 use App\Http\Controllers\users\DashboardController;
 use App\Http\Controllers\users\HomeController as UsersHomeController;
+use App\Http\Controllers\users\PembuatanAk1Controller;
 use App\Http\Controllers\users\ProfilController;
 use Illuminate\Support\Facades\Route;
 // Route::redirect('/home', '/admin');
@@ -65,6 +66,14 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
     Route::post('simpan-profil', [ProfilController::class, 'simpan_profil'])->name('simpan-profil');
     Route::get('logout', [HomeController::class, 'logout'])->name('logout');
     // end profil
+
+    // ak1
+    Route::get('ak1', [PembuatanAk1Controller::class, 'index'])->name('ak1');
+    Route::post('simpan-ak1', [PembuatanAk1Controller::class, 'simpan_ak1'])->name('simpan-ak1');
+    Route::get('download-pas-foto/{filename}', [PembuatanAk1Controller::class, 'download_pas_foto'])->name('download-pas-foto');
+    Route::get('download-pas-ktp/{filename}', [PembuatanAk1Controller::class, 'download_pas_ktp'])->name('download-pas-ktp');
+    Route::get('download-pas-ijazah/{filename}', [PembuatanAk1Controller::class, 'download_ijazah'])->name('download-ijazah');
+    // end ak1
 });
 
 // dashboard perusahaan

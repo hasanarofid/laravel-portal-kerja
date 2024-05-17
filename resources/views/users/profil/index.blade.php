@@ -73,8 +73,7 @@
                         </div>
                     @endif
                     <a href="#" class="file-upload">
-                        <input type="file" name="foto" id="exampleInputFile" class="input-file"
-                            onchange="previewImage(event)">
+                        <input type="file" name="foto" id="exampleInputFile" class="input-file">
                         <span><i class="fa fa-camera"></i> Unggah Foto</span>
                     </a>
                 </div>
@@ -102,11 +101,13 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-right: 150px;">
-                                <input type="radio" name="gender" class="flat-red" value="Laki-Laki" {{ $modPencaker->gender == 'Laki-Laki' ? 'checked' : '' }}>
+                                <input type="radio" name="gender" class="flat-red" value="Laki-Laki"
+                                    {{ $modPencaker->gender == 'Laki-Laki' ? 'checked' : '' }}>
                                 Laki-Laki
                             </label>
                             <label>
-                                <input type="radio" name="gender" class="flat-red" value="Perempuan" {{ $modPencaker->gender == 'Perempuan' ? 'checked' : '' }}>
+                                <input type="radio" name="gender" class="flat-red" value="Perempuan"
+                                    {{ $modPencaker->gender == 'Perempuan' ? 'checked' : '' }}>
                                 Perempuan
                             </label>
                         </div>
@@ -160,11 +161,30 @@
             }
         });
 
+        document.getElementById('exampleInputFile').addEventListener('change', function(event) {
+            const file = this.files[0];
+            if (file) {
+                const fileType = file.type;
+                const validImageTypes = ['image/jpeg', 'image/jpg'];
+                if (!validImageTypes.includes(fileType)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Hanya bisa Upload Foto dengan format Jpg dan Jpeg'
+                    });
+                    this.value = ''; // Clear the input
+                } else {
+                    previewImage(event); // Call the previewImage function
+                }
+            }
+        });
+
         function previewImage(event) {
             var reader = new FileReader();
             reader.onload = function() {
                 var output = document.getElementById('profile-picture');
                 output.src = reader.result;
+                output.style.display = 'block'; // Make the image visible
             }
             reader.readAsDataURL(event.target.files[0]);
         }
