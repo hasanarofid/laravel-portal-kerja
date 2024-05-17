@@ -123,11 +123,9 @@
                                     @endif
                                     @if (session('role_id') == 3)
                                         @if (session('foto_pencaker') == null)
-                                            <img src="{{ asset('dist/img/avatar.png') }}" class="user-image"
-                                                alt="User Image">
+                                            <img src="{{ asset('dist/img/avatar.png') }}">
                                         @else
-                                            <img src="{{ asset('fotoProfil/' . session('foto_pencaker')) }}"
-                                                >
+                                            <img src="{{ asset('fotoProfil/' . session('foto_pencaker')) }}">
                                         @endif
                                         <small>{{ session('alamat') }}</small>
                                     @endif
@@ -242,7 +240,7 @@
                                 <li><a href="#"><i class="fa fa-circle-o"></i> Lampiran Kualitas</a></li>
                             </ul>
                         </li>
-                        <li><a href="#"><i class="fa fa-book"></i> <span>Pembuatan Ak1</span></a></li>
+                        <li><a href="{{ route('users.ak1') }}"><i class="fa fa-book"></i> <span>Pembuatan Ak1</span></a></li>
                         <li><a href="#"><i class="fa fa-paper-plane"></i> <span>Cari Lowongan</span></a></li>
                         <li><a href="#"><i class="fa fa-list"></i> <span>Job Fair</span></a></li>
                         <li><a href="#"><i class="fa fa-info"></i> <span>Detail Info</span></a></li>

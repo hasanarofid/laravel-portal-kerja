@@ -1,9 +1,28 @@
 <script>
+    document.getElementById('exampleInputFile').addEventListener('change', function(event) {
+        const file = this.files[0];
+        if (file) {
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/jpg'];
+            if (!validImageTypes.includes(fileType)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Hanya bisa Upload Foto dengan format Jpg dan Jpeg'
+                });
+                this.value = ''; // Clear the input
+            } else {
+                previewImage(event); // Call the previewImage function
+            }
+        }
+    });
+
     function previewImage(event) {
         var reader = new FileReader();
         reader.onload = function() {
             var output = document.getElementById('profile-picture');
             output.src = reader.result;
+            output.style.display = 'block'; // Make the image visible
         }
         reader.readAsDataURL(event.target.files[0]);
     }

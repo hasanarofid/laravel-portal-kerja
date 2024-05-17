@@ -73,7 +73,8 @@
                         <a class="nav-link" href="{{ url('/') }}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/ak1') }}">AK1</a>
+                        <a class="nav-link" href="{{ route('users.ak1') }}">AK1</a>
+                        {{-- <a class="nav-link" href="{{ url('/ak1') }}">AK1</a> --}}
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/lowongan') }}">LOWONGAN KERJA</a>

@@ -10,7 +10,7 @@
                 <img id="profile-picture" src="{{ asset('img/image.jpg') }}" alt="Foto Profil">
             </div>
             <a href="#" class="file-upload">
-                <input type="file" name="foto" id="exampleInputFile" class="input-file" onchange="previewImage(event)">
+                <input type="file" name="foto" id="exampleInputFile" class="input-file">
                 <span><i class="fa fa-camera"></i> Unggah Foto</span>
             </a>
         </div>
