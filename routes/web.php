@@ -6,6 +6,7 @@ use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
 use App\Http\Controllers\users\BiodataController;
 use App\Http\Controllers\users\CvdanKeahlianController;
 use App\Http\Controllers\users\DashboardController;
+use App\Http\Controllers\users\DetailInfoController;
 use App\Http\Controllers\users\HomeController as UsersHomeController;
 use App\Http\Controllers\users\PembuatanAk1Controller;
 use App\Http\Controllers\users\ProfilController;
@@ -74,6 +75,10 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
     Route::get('download-pas-ktp/{filename}', [PembuatanAk1Controller::class, 'download_pas_ktp'])->name('download-pas-ktp');
     Route::get('download-pas-ijazah/{filename}', [PembuatanAk1Controller::class, 'download_ijazah'])->name('download-ijazah');
     // end ak1
+
+    // detailinfo
+    Route::get('detailinfo', [DetailInfoController::class, 'index'])->name('detailinfo');
+    // detailinfo
 });
 
 // dashboard perusahaan
