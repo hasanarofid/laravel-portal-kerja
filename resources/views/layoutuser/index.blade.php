@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('bower_components/morris.js/morris.css') }}">
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{ asset('bower_components/jvectormap/jquery-jvectormap.css') }}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <!-- Date Picker -->
     <link rel="stylesheet"
         href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
@@ -129,7 +131,7 @@
                                         @endif
                                         <small>{{ session('alamat') }}</small>
                                     @endif
-                                    
+
                                     <p>
                                         @if (session('role_id') == 1)
                                             {{ session('name') }}
@@ -237,13 +239,15 @@
                                 </li>
                                 <li><a href="{{ route('users.cvdankeahlian') }}"><i class="fa fa-circle-o"></i> CV &
                                         Keahlian</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Lampiran Kualitas</a></li>
+                                {{-- <li><a href="#"><i class="fa fa-circle-o"></i> Lampiran Kualitas</a></li> --}}
                             </ul>
                         </li>
-                        <li><a href="{{ route('users.ak1') }}"><i class="fa fa-book"></i> <span>Pembuatan Ak1</span></a></li>
+                        <li><a href="{{ route('users.ak1') }}"><i class="fa fa-book"></i> <span>Pembuatan
+                                    Ak1</span></a></li>
                         <li><a href="#"><i class="fa fa-paper-plane"></i> <span>Cari Lowongan</span></a></li>
-                        <li><a href="#"><i class="fa fa-list"></i> <span>Job Fair</span></a></li>
-                        <li><a href="#"><i class="fa fa-info"></i> <span>Detail Info</span></a></li>
+                        {{-- <li><a href="#"><i class="fa fa-list"></i> <span>Job Fair</span></a></li> --}}
+                        <li><a href="{{ route('users.detailinfo') }}"><i class="fa fa-info"></i> <span>Detail
+                                    Info</span></a></li>
                     </ul>
                 @endif
                 {{-- end user --}}
@@ -483,6 +487,9 @@
     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <!-- Select2 -->
     <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- InputMask -->
@@ -582,6 +589,17 @@
             //Timepicker
             $('.timepicker').timepicker({
                 showInputs: false
+            })
+        })
+        $(function() {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
             })
         })
     </script>
