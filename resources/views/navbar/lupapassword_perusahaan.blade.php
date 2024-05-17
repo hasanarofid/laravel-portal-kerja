@@ -37,43 +37,78 @@
         }
     </style>
     <div class="login-box">
-        <form action="{{ route('login-proses-users') }}" method="post">
+        <form action="{{ route('lupapassword2') }}" method="post">
             @csrf
             <div>
-                <h3>Login</h3>
+                <h3>Lupas Password</h3>
             </div>
             <div>
-                <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" id="username" class="form-control">
-                @error('name')
-                    <small style="color: red">{{ $message }}</small>
-                @enderror
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control">
             </div>
             <div>
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">Password Baru</label>
                 <div class="input-group">
-                    <input type="password" name="password" id="password" class="form-control" required>
+                    <input type="password" name="password" id="new_password" class="form-control" required>
+                    <span class="input-group-text" onclick="togglePasswordVisibility()">
+                        <i class="fa fa-eye" id="eyeIcon"></i>
+                    </span>
                 </div>
-                @error('password')
-                    <small style="color: red">{{ $message }}</small>
-                @enderror
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary form-control"
-                    style="border-radius: 10px; background-color: darkblue; margin-top: 10px;">Login</button>
-            </div>
-            <div class="password-options text-center">
-                <label class="input-group-text">
-                    <input type="checkbox" onclick="showPassword()"> Show Password
-                </label>
-                <a href="{{ url('/LupasPasswordPencaker') }}">Lupa Password</a>
 
             </div>
+            <div>
+                <label for="password" class="form-label">Konfirmasi Password</label>
+                <div class="input-group">
+                    <input type="password" name="password" id="confirm_password" class="form-control" required>
+                    <span class="input-group-text" onclick="togglePasswordVisibility2()">
+                        <i class="fa fa-eye" id="eyeIcon"></i>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary form-control" id="submit_button"
+                    style="border-radius: 10px; background-color: darkblue; margin-top: 10px;">Reset Password</button>
+            </div>
+            <div class="password-options text-center">
+            </div>
             <div class="text-center">
-                Belum punya akun? <a href="{{ url('/register') }}">Daftar</a>
+                Belum punya akun? <a href="{{ url('/daftar') }}">Daftar</a>
             </div>
         </form>
     </div>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("new_password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+
+        function togglePasswordVisibility2() {
+            var passwordInput = document.getElementById("confirm_password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+        document.getElementById('submit_button').addEventListener('click', function(event) {
+            var newPassword = document.getElementById('new_password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+
+            if (newPassword !== confirmPassword) {
+                event.preventDefault(); // Mencegah form submit
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Password dan Konfirmasi Password tidak sama!'
+                });
+
+            }
+        });
+    </script>
 @endsection
 @if ($errors->any())
     <script stype="text/javascript">
@@ -118,13 +153,3 @@
         });
     </script>
 @endif
-<script>
-    function showPassword() {
-        var passwordInput = document.getElementById("password");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
-    }
-</script>

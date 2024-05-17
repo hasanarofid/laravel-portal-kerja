@@ -8,6 +8,7 @@ use App\Http\Controllers\users\CvdanKeahlianController;
 use App\Http\Controllers\users\DashboardController;
 use App\Http\Controllers\users\DetailInfoController;
 use App\Http\Controllers\users\HomeController as UsersHomeController;
+use App\Http\Controllers\users\LupaPasswordController;
 use App\Http\Controllers\users\PembuatanAk1Controller;
 use App\Http\Controllers\users\ProfilController;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,8 @@ Route::get('/masukPerusahaan', 'HomeController@masukPerusahaan')->name('masukPer
 Route::post('/masuk-proses-perusahaan', [HomeController::class, 'login_proses_perusahaan'])->name('masuk-proses-perusahaan');
 Route::get('/daftar', 'HomeController@daftar')->name('daftar');
 Route::post('/register-perusahaan', [HomeController::class, 'register_perusahaan'])->name('register-perusahaan');
-
+Route::get('/LupasPasswordPerusahaan', [LupaPasswordController::class, 'lupaPassword_Perusahaan'])->name('lupasPassword-perusahaan');
+Route::post('/resetPasswordPerusahaan', [LupaPasswordController::class, 'resetPassword_Perusahaan'])->name('lupapassword2');
 // end
 
 // login dan register pencari kerja
@@ -35,6 +37,8 @@ Route::get('/loginpencariankerja', 'HomeController@loginpencariankerja')->name('
 Route::post('/login-proses-users', [HomeController::class, 'login_proses_users'])->name('login-proses-users');
 Route::get('/register', 'HomeController@register')->name('register');
 Route::post('/register-proses', [HomeController::class, 'register_proses'])->name('register-proses');
+Route::get('/LupasPasswordPencaker', [LupaPasswordController::class, 'lupaPassword_Pencaker'])->name('lupasPassword-pencaker');
+Route::post('/resetPasswordPencaker', [LupaPasswordController::class, 'resetPassword_Pencaker'])->name('lupapassword');
 // end 
 
 // dashboard users
