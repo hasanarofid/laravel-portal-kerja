@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
-use App\RegisterPerusahaan;
+use App\Perusahaan;
 use App\UsersPencaker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,7 +48,7 @@ class LupaPasswordController extends Controller
         DB::beginTransaction();
 
         try {
-            $modUserPerusahaan = RegisterPerusahaan::where('email', $request->email)->first();
+            $modUserPerusahaan = Perusahaan::where('email', $request->email)->first();
             if ($modUserPerusahaan) {
                 $modUserPerusahaan->password = $request->password;
                 $modUserPerusahaan->updated_at = now();

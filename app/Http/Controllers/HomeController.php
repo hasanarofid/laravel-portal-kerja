@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Location;
 use App\Job;
-use App\RegisterPerusahaan;
+use App\Perusahaan;
 use App\Roles;
 use App\RoleUser;
 use App\users;
@@ -120,20 +120,20 @@ class HomeController extends Controller
         // dd( $request->txtpassword);
         DB::beginTransaction();
         try {
-            $insertUser = RegisterPerusahaan::create([
-                'nama'                  => $request->name,
+            $insertUser = Perusahaan::create([
+                'nama_perusahaan'       => $request->name,
                 'username'              => $request->usernameAdmin,
                 'password'              => $request->txtpassword,
                 'email'                 => $request->email,
-                'no_perusahaan'         => $request->noPerusahaan,
+                'telepon'               => $request->noPerusahaan,
                 'alamat'                => $request->alamat,
-                'bidang_usaha'          => $request->bidangUsaha,
-                'keterangan'            => $request->keterangan,
+                'id_bidangusaha'        => $request->bidangUsaha,
+                'deskripsi_perusahaan'  => $request->keterangan,
                 'kode_perusahaan'       => $request->kodePerusahaan,
-                'urlPerusahaan'         => $request->urlPerusahaan,
+                'website'               => $request->urlPerusahaan,
                 'role_id'               => 2,
                 'created_at'            => now(),
-                'remember_token'        => $request->_token,
+                // 'remember_token'        => $request->_token,
             ]);
 
             if ($insertUser) {
@@ -187,11 +187,11 @@ class HomeController extends Controller
             'password' => 'required',
         ]);
 
-        $cek = RegisterPerusahaan::where('username', $request->username)->where('password', $request->password)->first();
+        $cek = Perusahaan::where('username', $request->username)->where('password', $request->password)->first();
 
         if ($cek) {
-            session()->put('nama', $cek->nama);
-            session()->put('id',$cek->id);
+            session()->put('nama', $cek->nama_perusahaan);
+            session()->put('id',$cek->id_perusahaan);
             session()->put('email',$cek->email);
             session()->put('role_id',$cek->role_id);
             return redirect()->route('perusahaan.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');

@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Admin2\DashboardAdminController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
+// use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
+use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController};
 use App\Http\Controllers\users\BiodataController;
 use App\Http\Controllers\users\CvdanKeahlianController;
 use App\Http\Controllers\users\DashboardController;
@@ -90,6 +91,13 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('dashboard', [DashboardPerusahaanController::class, 'index'])->name('dashboard');
     Route::get('logout', [HomeController::class, 'logoutPerusahaan'])->name('logout');
+    # start route input master Menu
+    Route::group(['prefix' => 'profile/', 'as' => 'profile.'], function () {
+        Route::get('index', [ProfilePerusahaanController::class, 'index'])->name('index');
+        Route::post('update', [ProfilePerusahaanController::class, 'update'])->name('update');
+            
+
+    });
 });
 
 // dashboard admin
