@@ -63,5 +63,8 @@
                 <input placeholder="Tanggal" type="text" name="tgl" class="form-control pull-right datepicker" id="datepicker">
             </div>
         </div>
+        <div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
     </div>
 </div>
