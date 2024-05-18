@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin2\DashboardAdminController;
 use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
-use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController};
+use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController, PetugasPenanggungJawab};
 use App\Http\Controllers\users\BiodataController;
 use App\Http\Controllers\users\CariLowonganController;
 use App\Http\Controllers\users\CvdanKeahlianController;
@@ -103,6 +103,20 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
             
 
     });
+
+    Route::group(['prefix' => 'undangan/', 'as' => 'undangan.'], function () {
+        Route::get('index', [UndanganController::class, 'index'])->name('index');
+    });
+
+    Route::group(['prefix' => 'pelamar/', 'as' => 'pelamar.'], function () {
+        Route::get('index', [PelamarController::class, 'index'])->name('index');
+    });
+
+    Route::group(['prefix' => 'petugaspenanggungjawab/', 'as' => 'petugaspenanggungjawab.'], function () {
+        Route::get('index', [PetugasPenanggungJawab::class, 'index'])->name('index');
+    });
+
+
 });
 
 // dashboard admin
