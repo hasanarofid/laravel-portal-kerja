@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
 use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController};
 use App\Http\Controllers\users\BiodataController;
+use App\Http\Controllers\users\CariLowonganController;
 use App\Http\Controllers\users\CvdanKeahlianController;
 use App\Http\Controllers\users\DashboardController;
 use App\Http\Controllers\users\DetailInfoController;
@@ -84,6 +85,10 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
     // detailinfo
     Route::get('detailinfo', [DetailInfoController::class, 'index'])->name('detailinfo');
     // detailinfo
+
+    // cari lowongan
+    Route::get('carilowongan', [CariLowonganController::class, 'index'])->name('carilowongan');
+    // cari lowongan
 });
 
 // dashboard perusahaan
