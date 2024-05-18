@@ -244,7 +244,7 @@
                         </li>
                         <li><a href="{{ route('users.ak1') }}"><i class="fa fa-book"></i> <span>Pembuatan
                                     Ak1</span></a></li>
-                        <li><a href="#"><i class="fa fa-paper-plane"></i> <span>Cari Lowongan</span></a></li>
+                        <li><a href="{{ route('users.carilowongan') }}"><i class="fa fa-paper-plane"></i> <span>Cari Lowongan</span></a></li>
                         {{-- <li><a href="#"><i class="fa fa-list"></i> <span>Job Fair</span></a></li> --}}
                         <li><a href="{{ route('users.detailinfo') }}"><i class="fa fa-info"></i> <span>Detail
                                     Info</span></a></li>
