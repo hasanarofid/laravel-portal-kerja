@@ -215,10 +215,9 @@
                 @if (session('role_id') == 2)
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li><a href="{{ route('perusahaan.home') }}"><i class="fa fa-home"></i> <span>Home</span></a>
-                        </li>
-                        <li><a href="{{ route('perusahaan.dashboard') }}"><i class="fa fa-dashboard"></i>
-                                <span>Dashboard</span></a></li>
+                        <li><a href="{{ route('perusahaan.home') }}"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                        <li><a href="{{ route('perusahaan.dashboard') }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                        <li><a href="{{ route('perusahaan.profile.index') }}"><i class="fa fa-dashboard"></i><span>Profile</span></a></li>
                     </ul>
                 @endif
                 @if (session('role_id') == 3)

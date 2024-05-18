@@ -14,7 +14,7 @@ Dashboard
                 <img class=" img-responsive" src="../../dist/img/photo1.png" alt="User profile picture" align="left" style="height: 100px;">
                 <table style="width: 100%;">
                     <tr>
-                        <td colspan="3"><h3><b>{{$cek->nama}}</b></h3></td>
+                        <td colspan="3"><h3><b>{{$cek->nama_perusahaan}}</b></h3></td>
                     </tr>
                     <tr>
                         <td>Alamat</td>
@@ -24,17 +24,17 @@ Dashboard
                     <tr>
                         <td>Telp</td>
                         <td>:</td>
-                        <td>{{$cek->no_perusahaan}}</td>
+                        <td>{{$cek->telepon}}</td>
                     </tr>
                     <tr>
                         <td>Bidang Usaha</td>
                         <td>:</td>
-                        <td>{{$cek->bidang_usaha}}</td>
+                        <td>{{$cek->id_bidangusaha}}</td>
                     </tr>
                     <tr>
                         <td>{{$cek->email}}</td>
                         <td></td>
-                        <td>{{$cek->url_perusahaan}}</td>
+                        <td>{{$cek->website}}</td>
                     </tr>
                 </table>
             </div>
