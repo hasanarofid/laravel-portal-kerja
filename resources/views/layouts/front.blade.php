@@ -144,9 +144,10 @@
                 @if (empty(session('role_id')))
                     <div class="navbar-nav ms-auto py-0">
                         <a href="{{ url('/') }}" class="nav-item nav-link active">HOME</a>
-                        <a href="{{ route('users.ak1') }}" class="nav-item nav-link">AK1</a>
+                        <a href="{{ url('/loginpencariankerja') }}" class="nav-item nav-link">AK1</a>
+                        <a class="nav-link" href="{{ url('/loginpencariankerja') }}">LOWONGAN KERJA</a>
                         {{-- <a href="{{ url('/ak1') }}" class="nav-item nav-link">AK1</a> --}}
-                        <a href="{{ url('/lowongan') }}" class="nav-item nav-link">LOWONGAN KERJA</a>
+                        {{-- <a href="{{ url('/lowongan') }}" class="nav-item nav-link">LOWONGAN KERJA</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">PENCARI KERJA
                                 TERDAFTAR</a>
@@ -196,8 +197,9 @@
                             <a href="{{ route('users.home') }}" class="nav-item nav-link active">HOME</a>
                             <a href="{{ route('users.dashboard') }}" class="nav-item nav-link">Dashboard</a>
                             <a href="{{ route('users.ak1') }}" class="nav-item nav-link">AK1</a>
+                            <a href="{{ route('users.carilowongan') }}" class="nav-item nav-link">LOWONGAN KERJA</a>
                             {{-- <a href="{{ url('/ak1') }}" class="nav-item nav-link">AK1</a> --}}
-                            <a href="{{ url('/lowongan') }}" class="nav-item nav-link">LOWONGAN KERJA</a>
+                            {{-- <a href="{{ url('/lowongan') }}" class="nav-item nav-link">LOWONGAN KERJA</a> --}}
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle"
                                     data-bs-toggle="dropdown">{{ session('pencaker_name') }}</a>

@@ -77,7 +77,8 @@
                         {{-- <a class="nav-link" href="{{ url('/ak1') }}">AK1</a> --}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/lowongan') }}">LOWONGAN KERJA</a>
+                        {{-- <a class="nav-link" href="{{ url('/lowongan') }}">LOWONGAN KERJA</a> --}}
+                        <a class="nav-link" href="{{ route('users.carilowongan') }}">LOWONGAN KERJA</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/pencari') }}">PENCARI KERJA TERDAFTAR</a>

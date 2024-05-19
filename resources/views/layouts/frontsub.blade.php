@@ -125,9 +125,10 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ url('/') }}" class="nav-item nav-link" style="color: black">HOME</a>
-                    <a href="{{ route('users.ak1') }}" class="nav-item nav-link {{ request()->is('ak1*') ? 'active' : '' }}" style="color: black">AK1</a>
+                    <a href="{{ url('/loginpencariankerja') }}" class="nav-item nav-link {{ request()->is('ak1*') ? 'active' : '' }}" style="color: black">AK1</a>
                     {{-- <a href="{{ url('/ak1') }}" class="nav-item nav-link {{ request()->is('ak1*') ? 'active' : '' }}" style="color: black">AK1</a> --}}
-                    <a href="{{ url('/lowongan') }}" class="nav-item nav-link" style="color: black">LOWONGAN KERJA</a>
+                    {{-- <a href="{{ url('/lowongan') }}" class="nav-item nav-link" style="color: black">LOWONGAN KERJA</a> --}}
+                    <a href="{{ url('/loginpencariankerja') }}" class="nav-item nav-link" style="color: black">LOWONGAN KERJA</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                             style="color: black">PENCARI KERJA TERDAFTAR</a>
