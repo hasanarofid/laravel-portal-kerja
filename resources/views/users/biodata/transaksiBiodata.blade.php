@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-md-6 px-3">
                         <div class="form-group">
-                            <label for="kota_kabupaten">Kota/Kabupate</label>
+                            <label for="kota_kabupaten">Kota/Kabupaten</label>
                             <select name="kota_kabupaten" class="form-control select2" style="width: 100%;" required>
                                 <option value="" selected disabled>--Pilih--</option>
                                 <option value="Surabaya">Surabaya</option>
