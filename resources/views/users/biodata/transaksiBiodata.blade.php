@@ -20,22 +20,18 @@
             <div class="box box-primary" style="padding: 20px;"> <!-- Menambahkan padding pada card -->
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input name="nama" class="form-control" id="nama" placeholder="Nama Lengkap" required autocomplete="off">
+                    <input name="nama" class="form-control" id="nama" placeholder="Nama Lengkap" required
+                        autocomplete="off">
                 </div>
                 <div class="row">
                     <div class="col-md-6 px-3"> <!-- Menambahkan padding kiri dan kanan di sini -->
                         <div class="form-group">
-                            <label for="tempat_lahir">Tempat Lahir</label>
-                            <select name="tempat_lahir" class="form-control select2" style="width: 100%;" required>
+                            <label for="tempat_lahir_id">Tempat Lahir</label>
+                            <select name="tempat_lahir_id" class="form-control select2" style="width: 100%;" required>
                                 <option value="" selected disabled>--Pilih--</option>
-                                <option value="Jakarta">Jakarta</option>
-                                <option value="Surabaya">Surabaya</option>
-                                <option value="Bandung">Bandung</option>
-                                <option value="Medan">Medan</option>
-                                <option value="Semarang">Semarang</option>
-                                <option value="Makassar">Makassar</option>
-                                <option value="Palembang">Palembang</option>
-                                <option value="Depok">Depok</option>
+                                @foreach ($modKota as $item)
+                                    <option value="{{ $item->kota_tabel_id }}">{{ $item->nama_kota }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -62,58 +58,58 @@
                 </div>
                 <div class="form-group">
                     <label for="alamat">Alamat (Sesuai KTP)</label>
-                    <input name="alamat" class="form-control" id="alamat" placeholder="Alamat Lengkap" required autocomplete="off">
+                    <input name="alamat" class="form-control" id="alamat" placeholder="Alamat Lengkap" required
+                        autocomplete="off">
                 </div>
                 <div class="row">
                     <div class="col-md-6 px-3"> <!-- Menambahkan padding kiri dan kanan di sini -->
                         <div class="form-group">
-                            <label for="provinsi">Provinsi</label>
-                            <select name="provinsi" class="form-control select2" style="width: 100%;" required>
+                            <label for="provinsi_id">Provinsi</label>
+                            <select name="provinsi_id" class="form-control select2" style="width: 100%;" required>
                                 <option value="" selected disabled>--Pilih--</option>
-                                <option value="Jawa Timur">Jawa Timur</option>
-                                <option value="Jawa Barat">Jawa Barat</option>
-                                <option value="Sumatra">Sumatra</option>
-                                <option value="Jawa Tengah">Jawa Tengah</option>
+                                @foreach ($modProvinsi as $item)
+                                    <option value="{{ $item->provinsi_tabel_id }}">{{ $item->nama_provinsi }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="Kecamatan">Kecamatan</label>
-                            <select name="Kecamatan" class="form-control select2" style="width: 100%;" required>
+                            <label for="kecamatan_id">Kecamatan</label>
+                            <select name="kecamatan_id" class="form-control select2" style="width: 100%;" required>
                                 <option value="" selected disabled>--Pilih--</option>
-                                <option value="Gubeng">Gubeng</option>
-                                <option value="Sidoarjo">Sidoarjo</option>
-                                <option value="Antapani">Antapani</option>
-                                <option value="Sukasari">Sukasari</option>
+                                @foreach ($modKecamatan as $item)
+                                    <option value="{{ $item->kecamatan_tabel_id }}">{{ $item->nama_kecamatan }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="rt">RT</label>
-                            <input name="rt" class="form-control" id="rt" placeholder="RT" required autocomplete="off">
+                            <input name="rt" class="form-control" id="rt" placeholder="RT" required
+                                autocomplete="off">
                         </div>
                     </div>
                     <div class="col-md-6 px-3">
                         <div class="form-group">
-                            <label for="kota_kabupaten">Kota/Kabupaten</label>
-                            <select name="kota_kabupaten" class="form-control select2" style="width: 100%;" required>
+                            <label for="kota_id">Kota/Kabupaten</label>
+                            <select name="kota_id" class="form-control select2" style="width: 100%;" required>
                                 <option value="" selected disabled>--Pilih--</option>
-                                <option value="Surabaya">Surabaya</option>
-                                <option value="Palembang">Palembang</option>
-                                <option value="Bandung">Bandung</option>
-                                <option value="Sidoarjo">Sidoarjo</option>
+                                @foreach ($modKota as $item)
+                                    <option value="{{ $item->kota_tabel_id }}">{{ $item->nama_kota }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="kelurahan">Kelurahan</label>
-                            <select name="kelurahan" class="form-control select2" style="width: 100%;" required>
+                            <label for="kelurahan_id">Kelurahan</label>
+                            <select name="kelurahan_id" class="form-control select2" style="width: 100%;" required>
                                 <option value="" selected disabled>--Pilih--</option>
-                                <option value="Dukuh Kupang">Dukuh Kupang</option>
-                                <option value="Dukuh Pakis">Dukuh Pakis</option>
-                                <option value="Gunung Sari">Gunung Sari</option>
+                                @foreach ($modKelurahan as $item)
+                                    <option value="{{ $item->kelurahan_tabel_id }}">{{ $item->nama_kelurahan }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="rw">RW</label>
-                            <input name="rw" class="form-control" id="rw" placeholder="RW" required autocomplete="off">
+                            <input name="rw" class="form-control" id="rw" placeholder="RW" required
+                                autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -148,7 +144,8 @@
                     <div class="col-md-6 px-3">
                         <div class="form-group">
                             <label for="kewarganegaraan">Kewarganegaraan</label>
-                            <select name="kewarganegaraan" class="form-control select2" style="width: 100%;" required>
+                            <select name="kewarganegaraan" class="form-control select2" style="width: 100%;"
+                                required>
                                 <option value="" selected disabled>--Pilih--</option>
                                 <option value="WNI">WNI</option>
                                 <option value="WNA">WNA</option>
@@ -162,7 +159,8 @@
                 </div>
                 <div class="form-group">
                     <label for="link_video">Link Video Portofolio Diri</label>
-                    <input name="link_video" class="form-control" id="link_video" placeholder="Link video" autocomplete="off">
+                    <input name="link_video" class="form-control" id="link_video" placeholder="Link video"
+                        autocomplete="off">
                 </div>
                 <div class="row">
                     <div class="col-md-6 px-3"> <!-- Menambahkan padding kiri dan kanan di sini -->

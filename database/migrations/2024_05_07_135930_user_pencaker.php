@@ -38,6 +38,8 @@ class UserPencaker extends Migration
 
             $table->string('remember_token')->nullable();
 
+            $table->boolean('is_active')->default(true);
+
             $table->timestamps();
 
             $table->softDeletes();

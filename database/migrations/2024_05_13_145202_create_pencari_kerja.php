@@ -22,7 +22,7 @@ class CreatePencariKerja extends Migration
             $table->date('tgl_daftar')->nullable();
             $table->string('nama');
             $table->string('foto')->nullable();
-            $table->string('tempat_lahir');
+            $table->string('tempat_lahir_id');
             $table->date('tgl_lahir');
             $table->string('gender');
             $table->string('agama');
@@ -34,10 +34,10 @@ class CreatePencariKerja extends Migration
             $table->string('telepon')->nullable();
             $table->string('id_sekolah')->nullable();
             $table->string('alamat');
-            $table->string('provinsi_nama');
-            $table->string('kota_nama');
-            $table->string('kecamatan_nama');
-            $table->string('kelurahan_nama');
+            $table->string('provinsi_id');
+            $table->string('kota_id');
+            $table->string('kecamatan_id');
+            $table->string('kelurahan_id');
             $table->string('rw');
             $table->string('rt');
             $table->string('jml_anak');

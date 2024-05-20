@@ -29,28 +29,14 @@
                 <div class="row">
                     <div class="col-md-6 px-3"> <!-- Menambahkan padding kiri dan kanan di sini -->
                         <div class="form-group">
-                            <label for="tempat_lahir">Tempat Lahir</label>
-                            <select name="tempat_lahir" class="form-control select2" style="width: 100%;" required>
-                                <option value="Jakarta"
-                                    {{ $modPencariKerja->tempat_lahir == 'Jakarta' ? 'selected' : '' }}>Jakarta</option>
-                                <option value="Surabaya"
-                                    {{ $modPencariKerja->tempat_lahir == 'Surabaya' ? 'selected' : '' }}>Surabaya
-                                </option>
-                                <option value="Bandung"
-                                    {{ $modPencariKerja->tempat_lahir == 'Bandung' ? 'selected' : '' }}>Bandung</option>
-                                <option value="Medan"
-                                    {{ $modPencariKerja->tempat_lahir == 'Medan' ? 'selected' : '' }}>Medan</option>
-                                <option value="Semarang"
-                                    {{ $modPencariKerja->tempat_lahir == 'Semarang' ? 'selected' : '' }}>Semarang
-                                </option>
-                                <option value="Makassar"
-                                    {{ $modPencariKerja->tempat_lahir == 'Makassar' ? 'selected' : '' }}>Makassar
-                                </option>
-                                <option value="Palembang"
-                                    {{ $modPencariKerja->tempat_lahir == 'Palembang' ? 'selected' : '' }}>Palembang
-                                </option>
-                                <option value="Depok"
-                                    {{ $modPencariKerja->tempat_lahir == 'Depok' ? 'selected' : '' }}>Depok</option>
+                            <label for="tempat_lahir_id">Tempat Lahir</label>
+                            <select name="tempat_lahir_id" class="form-control select2" style="width: 100%;" required>
+                                @foreach ($modKota as $item)
+                                    <option value="{{ $item->kota_tabel_id }}"
+                                        {{ $item->kota_tabel_id == $modPencariKerja->tempat_lahir_id ? 'selected' : '' }}>
+                                        {{ $item->nama_kota }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -85,37 +71,25 @@
                 <div class="row">
                     <div class="col-md-6 px-3"> <!-- Menambahkan padding kiri dan kanan di sini -->
                         <div class="form-group">
-                            <label for="provinsi">Provinsi</label>
-                            <select name="provinsi" class="form-control select2" style="width: 100%;" required>
-                                <option value="Jawa Timur"
-                                    {{ $modPencariKerja->provinsi_nama == 'Jawa Timur' ? 'selected' : '' }}>Jawa Timur
-                                </option>
-                                <option value="Jawa Barat"
-                                    {{ $modPencariKerja->provinsi_nama == 'Jawa Barat' ? 'selected' : '' }}>Jawa Barat
-                                </option>
-                                <option value="Sumatra"
-                                    {{ $modPencariKerja->provinsi_nama == 'Sumatra' ? 'selected' : '' }}>Sumatra
-                                </option>
-                                <option value="Jawa Tengah"
-                                    {{ $modPencariKerja->provinsi_nama == 'Jawa Tengah' ? 'selected' : '' }}>Jawa
-                                    Tengah</option>
+                            <label for="provinsi_id">Provinsi</label>
+                            <select name="provinsi_id" class="form-control select2" style="width: 100%;" required>
+                                @foreach ($modProvinsi as $item)
+                                    <option value="{{ $item->provinsi_tabel_id }}"
+                                        {{ $item->provinsi_tabel_id == $modPencariKerja->provinsi_id ? 'selected' : '' }}>
+                                        {{ $item->nama_provinsi }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="Kecamatan">Kecamatan</label>
-                            <select name="Kecamatan" class="form-control select2" style="width: 100%;" required>
-                                <option value="Gubeng"
-                                    {{ $modPencariKerja->Kecamatan_nama == 'Gubeng' ? 'selected' : '' }}>Gubeng
-                                </option>
-                                <option value="Sidoarjo"
-                                    {{ $modPencariKerja->Kecamatan_nama == 'Sidoarjo' ? 'selected' : '' }}>Sidoarjo
-                                </option>
-                                <option value="Antapani"
-                                    {{ $modPencariKerja->Kecamatan_nama == 'Antapani' ? 'selected' : '' }}>Antapani
-                                </option>
-                                <option value="Sukasari"
-                                    {{ $modPencariKerja->Kecamatan_nama == 'Sukasari' ? 'selected' : '' }}>Sukasari
-                                </option>
+                            <label for="kecamatan_id">Kecamatan</label>
+                            <select name="kecamatan_id" class="form-control select2" style="width: 100%;" required>
+                                @foreach ($modKecamatan as $item)
+                                    <option value="{{ $item->kecamatan_tabel_id }}"
+                                        {{ $item->kecamatan_tabel_id == $modPencariKerja->kecamatan_id ? 'selected' : '' }}>
+                                        {{ $item->nama_kecamatan }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -126,31 +100,25 @@
                     </div>
                     <div class="col-md-6 px-3">
                         <div class="form-group">
-                            <label for="kota_kabupaten">Kota/Kabupate</label>
-                            <select name="kota_kabupaten" class="form-control select2" style="width: 100%;" required>
-                                <option value="Surabaya"
-                                    {{ $modPencariKerja->kota_nama == 'Surabaya' ? 'selected' : '' }}>Surabaya</option>
-                                <option value="Palembang"
-                                    {{ $modPencariKerja->kota_nama == 'Palembang' ? 'selected' : '' }}>Palembang
-                                </option>
-                                <option value="Bandung"
-                                    {{ $modPencariKerja->kota_nama == 'Bandung' ? 'selected' : '' }}>Bandung</option>
-                                <option value="Sidoarjo"
-                                    {{ $modPencariKerja->kota_nama == 'Sidoarjo' ? 'selected' : '' }}>Sidoarjo</option>
+                            <label for="kota_id">Kota/Kabupate</label>
+                            <select name="kota_id" class="form-control select2" style="width: 100%;" required>
+                                @foreach ($modKota as $item)
+                                    <option value="{{ $item->kota_tabel_id }}"
+                                        {{ $item->kota_tabel_id == $modPencariKerja->kota_id ? 'selected' : '' }}>
+                                        {{ $item->nama_kota }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="kelurahan">Kelurahan</label>
-                            <select name="kelurahan" class="form-control select2" style="width: 100%;" required>
-                                <option value="Dukuh Kupang"
-                                    {{ $modPencariKerja->kelurahan_nama == '"Dukuh Kupang' ? 'selected' : '' }}>Dukuh
-                                    Kupang</option>
-                                <option value="Dukuh Pakis"
-                                    {{ $modPencariKerja->kelurahan_nama == '"Dukuh Pakis' ? 'selected' : '' }}>Dukuh
-                                    Pakis</option>
-                                <option value="Gunung Sari"
-                                    {{ $modPencariKerja->kelurahan_nama == 'Gunung Sari' ? 'selected' : '' }}>Gunung
-                                    Sari</option>
+                            <label for="kelurahan_id">Kelurahan</label>
+                            <select name="kelurahan_id" class="form-control select2" style="width: 100%;" required>
+                                @foreach ($modKelurahan as $item)
+                                    <option value="{{ $item->kelurahan_tabel_id }}"
+                                        {{ $item->kelurahan_tabel_id == $modPencariKerja->kelurahan_id ? 'selected' : '' }}>
+                                        {{ $item->nama_kelurahan }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -266,7 +234,7 @@
                     </thead>
                     <tbody>
                         @foreach ($modKeterampilan as $key => $value)
-                        {{-- @dd($value) --}}
+                            {{-- @dd($value) --}}
                             <tr>
                                 <td id="no_urut" style="text-align: center; vertical-align: middle;">
                                     {{ $key + 1 }}
@@ -276,7 +244,8 @@
                                         name="ketrampilan[{{ $key + 1 }}][nama_keterampilan]"
                                         class="form-control" placeholder="Nama Keterampilan">
                                     <input type="hidden" value="{{ $value['keterampilan_id'] }}"
-                                        name="ketrampilan[{{ $key + 1 }}][keterampilan_id]" class="form-control">
+                                        name="ketrampilan[{{ $key + 1 }}][keterampilan_id]"
+                                        class="form-control">
                                 </td>
                                 <td>
                                     <input value="{{ $value['keterangan'] }}"
