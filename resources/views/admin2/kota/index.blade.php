@@ -72,7 +72,7 @@
     </div>
 @endsection
 @section('js')
-    @include('admin2.Provinsi.jsFunction')
+    @include('admin2.kota.jsFunction')
 @endsection
 @if ($errors->any())
     <script stype="text/javascript">
