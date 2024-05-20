@@ -106,29 +106,6 @@ SIKEREN | Dashboard
             </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <h5><b>Sektor Usaha</b></h5>
-        <div class="box box-info">
-            <table>
-                <tr>
-                    <th>Bidang</th>
-                    <th>Keteragan</th>
-                    <th>Upload Logo Perusahaan</th>
-                </tr>
-                <tr>
-                    <td>
-
-                    </td>
-                    <td>
-
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
     <div>
         <button type="button" class="btn btn-block btn-danger btn-sm " onclick="profile('{{$loadPerusahaan->id_perusahaan}}')">Edit</button>
     </div>
@@ -149,7 +126,7 @@ SIKEREN | Dashboard
                             <label for="txtNama" class="col-sm-2 control-label">Nama Perusahaan</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="txtNama" id="txtNama" value="{{$loadPerusahaan->nama_perusahaan}}">
-                                <input type="text" class="form-control" name="txtId" id="txtId" value="{{$loadPerusahaan->id_perusahaan}}">
+                                <input type="hidden" class="form-control" name="txtId" id="txtId" value="{{$loadPerusahaan->id_perusahaan}}">
                             </div>
                         </div>
                         <div class="form-group">
