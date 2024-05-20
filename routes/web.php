@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin2\DashboardAdminController;
+use App\Http\Controllers\Admin2\KategoriController;
 use App\Http\Controllers\Admin2\KecamatanController;
 use App\Http\Controllers\Admin2\KelurahanController;
 use App\Http\Controllers\Admin2\KotaController;
@@ -151,6 +152,12 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth.admi
     Route::get('kota', [KotaController::class, 'index'])->name('kota');
     Route::post('simpan-kota', [KotaController::class, 'simpan_kota'])->name('simpan-kota');
     Route::post('hapusdatakota', [KotaController::class, 'hapusdatakota'])->name('hapusdatakota');
+    // kota
+
+    // kota
+    Route::get('kategori', [KategoriController::class, 'index'])->name('kategori');
+    Route::post('simpan-kategori', [KategoriController::class, 'simpan_kategori'])->name('simpan-kategori');
+    Route::post('hapusdatakategori', [KategoriController::class, 'hapusdatakategori'])->name('hapusdatakategori');
     // kota
 });
 
