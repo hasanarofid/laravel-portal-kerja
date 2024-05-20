@@ -37,39 +37,38 @@
             </b>
         </div>
         <div class="box-body">
-            <div class="table-responsive">
-                <table class="table table-hover table-rounded table-striped" id="table-riwayat">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Provinsi</th>
-                            <th>Tanggal Dibuat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if ($modProvinsi)
-                            @foreach ($modProvinsi as $key => $item)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $item->nama_provinsi }}</td>
-                                    <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
-                                    <td>
-                                        <div class="button-container">
-                                            <button type="button" onclick="deleteRow( {{ $item->provinsi_tabel_id }} )"
-                                                class="btn btn-icon btn-danger">
-                                                <span><i class="fa fa-minus"></i></span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
-                        @endif
-                    </tbody>
-                </table>
-            </div>
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Provinsi</th>
+                        <th>Tanggal Dibuat</th>
+                        <th>aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if ($modProvinsi)
+                        @foreach ($modProvinsi as $key => $item)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->nama_provinsi }}</td>
+                                <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                                <td>
+                                    <div class="button-container">
+                                        <button type="button" onclick="deleteRow( {{ $item->provinsi_tabel_id }} )"
+                                            class="btn btn-icon btn-danger">
+                                            <span><i class="fa fa-minus"></i></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
         </div>
     </div>
+
 @endsection
 @section('js')
     @include('admin2.Provinsi.jsFunction')

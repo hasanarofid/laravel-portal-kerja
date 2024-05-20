@@ -38,12 +38,13 @@
         </div>
         <div class="box-body">
             <div class="table-responsive">
-                <table class="table table-hover table-rounded table-striped" id="table-riwayat">
+                <table class="table table-hover table-rounded table-striped" id="example1">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama Kota</th>
                             <th>Tanggal Dibuat</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
