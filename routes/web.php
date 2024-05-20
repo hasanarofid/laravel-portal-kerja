@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin2\KotaController;
 use App\Http\Controllers\Admin2\ProvinsiController;
 use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
-use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController, PetugasPenanggungJawab};
+use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController, PetugasPenanggungJawab,LowonganController};
 use App\Http\Controllers\users\BiodataController;
 use App\Http\Controllers\users\CariLowonganController;
 use App\Http\Controllers\users\CvdanKeahlianController;
@@ -119,6 +119,15 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
 
     Route::group(['prefix' => 'petugaspenanggungjawab/', 'as' => 'petugaspenanggungjawab.'], function () {
         Route::get('index', [PetugasPenanggungJawab::class, 'index'])->name('index');
+    });
+
+
+    Route::group(['prefix' => 'lowongan/', 'as' => 'lowongan.'], function () {
+        Route::get('index', [LowonganController::class, 'index'])->name('index');
+        Route::get('tambah', [LowonganController::class, 'tambah'])->name('tambah');
+        Route::post('simpanLowongan', [LowonganController::class, 'simpanLowongan'])->name('simpanLowongan');
+            
+
     });
 });
 
