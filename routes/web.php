@@ -126,6 +126,8 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
         Route::get('index', [LowonganController::class, 'index'])->name('index');
         Route::get('tambah', [LowonganController::class, 'tambah'])->name('tambah');
         Route::post('simpanLowongan', [LowonganController::class, 'simpanLowongan'])->name('simpanLowongan');
+        Route::get('loadLowongan/{id?}', [LowonganController::class, 'loadLowongan'])->name('loadLowongan');
+
             
 
     });
