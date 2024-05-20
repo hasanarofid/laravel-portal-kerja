@@ -84,15 +84,15 @@ class HomeController extends Controller
             if ($insertUser) {
                 DB::commit();
                 return redirect()->route('loginpencariankerja');
-            } else{
+            } else {
                 return redirect()->route('register')->with('failed', 'Gagal');
-            } 
+            }
         } catch (\Exception $ex) {
             DB::rollBack();
             return $ex->getMessage();
         }
     }
-    
+
     public function loginpencariankerja(Request $request)
     {
         return view('navbar.login_pencariankerja');
@@ -101,8 +101,8 @@ class HomeController extends Controller
     public function daftar(Request $request)
     {
         return view('navbar.register_perusahaan');
-    } 
-    
+    }
+
     public function register_perusahaan(Request $request)
     {
         // $request->validate([
@@ -116,7 +116,7 @@ class HomeController extends Controller
         //     'keterangan' => 'required',
         //     'kodePerusahaan' => 'required',
         // ]);
-        
+
         // dd( $request->txtpassword);
         DB::beginTransaction();
         try {
@@ -139,9 +139,9 @@ class HomeController extends Controller
             if ($insertUser) {
                 DB::commit();
                 return redirect()->route('masukPerusahaan');
-            } else{
+            } else {
                 return redirect()->route('daftar')->with('failed', 'Gagal');
-            } 
+            }
         } catch (\Exception $ex) {
             DB::rollBack();
             return $ex->getMessage();
@@ -164,22 +164,21 @@ class HomeController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-        
-        $cek = UsersPencaker::where('username', $request->username)->where('password', $request->password)->first();
+
+        $cek = UsersPencaker::where('username', $request->username)->where('password', $request->password)->where('is_active', true)->first();
 
         if ($cek) {
             session()->put('pencaker_name', $cek->name);
-            session()->put('pencaker_id',$cek->id);
-            session()->put('role_id',$cek->role_id);
-            session()->put('foto_pencaker',$cek->foto);
+            session()->put('pencaker_id', $cek->id);
+            session()->put('role_id', $cek->role_id);
+            session()->put('foto_pencaker', $cek->foto);
             return redirect()->route('users.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");
             return redirect()->route('loginpencariankerja')->with('failed', 'Gagal');
         }
-        
-    } 
-    
+    }
+
     public function login_proses_perusahaan(Request $request)
     {
         $request->validate([
@@ -187,19 +186,18 @@ class HomeController extends Controller
             'password' => 'required',
         ]);
 
-        $cek = Perusahaan::where('username', $request->username)->where('password', $request->password)->first();
+        $cek = Perusahaan::where('username', $request->username)->where('password', $request->password)->where('is_active', true)->first();
 
         if ($cek) {
             session()->put('nama', $cek->nama_perusahaan);
-            session()->put('id',$cek->id_perusahaan);
-            session()->put('email',$cek->email);
-            session()->put('role_id',$cek->role_id);
+            session()->put('id', $cek->id_perusahaan);
+            session()->put('email', $cek->email);
+            session()->put('role_id', $cek->role_id);
             return redirect()->route('perusahaan.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");
             return redirect()->route('masukPerusahaan')->with('failed', 'Gagal');
         }
-        
     }
 
     public function login_proses_admin(Request $request)
@@ -214,17 +212,16 @@ class HomeController extends Controller
 
         if ($cek) {
             session()->put('name', $cek->name);
-            session()->put('id',$cek->id);
-            session()->put('email',$cek->email);
-            session()->put('role_id',$role->role_id);
-            session()->put('alamat',$role->alamat);
+            session()->put('id', $cek->id);
+            session()->put('email', $cek->email);
+            session()->put('role_id', $role->role_id);
+            session()->put('alamat', $role->alamat);
             return redirect()->route('admin.dashboard')->with('success', 'Selamat, Anda telah sukses masuk.');
         } else {
             session()->flash("error", "Maaf, Username atau Password yang anda inputkan salah, harap coba lagi.");
             return redirect()->route('loginAdmin')->with('failed', 'Gagal');
         }
-        
-    } 
+    }
 
     public function logout()
     {

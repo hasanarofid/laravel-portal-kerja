@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
+use App\Kecamatan;
+use App\Kelurahan;
 use App\Keterampilan;
+use App\Kota;
 use App\PencariKerja;
+use App\Provinsi;
 use App\UsersPencaker;
 use DateTime;
 use Illuminate\Http\Request;
@@ -13,18 +17,23 @@ use Illuminate\Support\Facades\DB;
 class BiodataController extends Controller
 {
     public function index(Request $request)
-    {
+    {   
+        $modProvinsi = Provinsi::get();
+        $modKota = Kota::get();
+        $modKecamatan = Kecamatan::get();
+        $modKelurahan = Kelurahan::get();
         $modPencariKerja = PencariKerja::where('users_pencaker_id', session('pencaker_id'))->first();
         if (!empty($modPencariKerja->pencari_kerja_id)) {
             $modKeterampilan = Keterampilan::where('pencari_kerja_id', $modPencariKerja->pencari_kerja_id)->get();
-            return view('users.biodata.biodata', compact('modPencariKerja', 'modKeterampilan'));
+            return view('users.biodata.biodata', compact('modPencariKerja', 'modKeterampilan', 'modProvinsi', 'modKota', 'modKecamatan', 'modKelurahan'));
         }else{
-            return view('users.biodata.biodata', compact('modPencariKerja'));
+            return view('users.biodata.biodata', compact('modPencariKerja', 'modProvinsi', 'modKota', 'modKecamatan', 'modKelurahan'));
         }
     }
 
     public function simpan_biodata(Request $request)
     {
+        // dd($request->all());
         // $request->validate([
         //     'name' => 'required',
         //     'username' => 'required',
@@ -62,7 +71,7 @@ class BiodataController extends Controller
                 if (!empty($filename)) {
                     $updatePencaker->foto = $filename;
                 }
-                $updatePencaker->tempat_lahir = $request->tempat_lahir;
+                $updatePencaker->tempat_lahir_id = $request->tempat_lahir_id;
                 $updatePencaker->tgl_lahir = $tgl_lahir->format('Y-m-d');
                 $updatePencaker->gender = $request->jeniskelamin;
                 $updatePencaker->agama = $request->agama;
@@ -72,10 +81,10 @@ class BiodataController extends Controller
                 $updatePencaker->berat_badan = $request->berat_badan;
                 $updatePencaker->alamat = $request->alamat;
                 $updatePencaker->keterangan = $request->keterangan;
-                $updatePencaker->provinsi_nama = $request->provinsi;
-                $updatePencaker->kota_nama = $request->kota_kabupaten;
-                $updatePencaker->kecamatan_nama = $request->Kecamatan;
-                $updatePencaker->kelurahan_nama = $request->kelurahan;
+                $updatePencaker->provinsi_id = $request->provinsi_id;
+                $updatePencaker->kota_id = $request->kota_id;
+                $updatePencaker->kecamatan_id = $request->kecamatan_id;
+                $updatePencaker->kelurahan_id = $request->kelurahan_id;
                 $updatePencaker->rw = $request->rw;
                 $updatePencaker->rt = $request->rt;
                 $updatePencaker->jml_anak = $request->jml_anak;
@@ -121,8 +130,8 @@ class BiodataController extends Controller
                 $insertPencaker = PencariKerja::create([
                     'users_pencaker_id'            => session('pencaker_id'),
                     'nama'                         => $request->nama,
-                    'foto'                         => $filename,
-                    'tempat_lahir'                 => $request->tempat_lahir,
+                    'foto'                         => !empty($filename) ? $filename : null,
+                    'tempat_lahir_id'              => $request->tempat_lahir_id,
                     'tgl_lahir'                    => $tgl_lahir->format('Y-m-d'),
                     'gender'                       => $request->jeniskelamin,
                     'agama'                        => $request->agama,
@@ -131,10 +140,10 @@ class BiodataController extends Controller
                     'tinggi_badan'                 => $request->tinggi_badan,
                     'berat_badan'                  => $request->berat_badan,
                     'alamat'                       => $request->alamat,
-                    'provinsi_nama'                => $request->provinsi,
-                    'kota_nama'                    => $request->kota_kabupaten,
-                    'kecamatan_nama'               => $request->Kecamatan,
-                    'kelurahan_nama'               => $request->kelurahan,
+                    'provinsi_id'                  => $request->provinsi_id,
+                    'kota_id'                      => $request->kota_id,
+                    'kecamatan_id'                 => $request->kecamatan_id,
+                    'kelurahan_id'                 => $request->kelurahan_id,
                     'keterangan'                   => $request->keterangan,
                     'rw'                           => $request->rw,
                     'rt'                           => $request->rt,

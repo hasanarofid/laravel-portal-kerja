@@ -208,8 +208,12 @@
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MAIN NAVIGATION</li>
                         <li><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i> <span>Home</span></a></li>
-                        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i>
-                                <span>Dashboard</span></a></li>
+                        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                        <li><a href="{{ route('admin.provinsi') }}"><i class="fa fa-list-alt"></i> <span>Provinsi</span></a></li>
+                        <li><a href="{{ route('admin.kota') }}"><i class="fa fa-list-alt"></i> <span>Kota</span></a></li>
+                        <li><a href="{{ route('admin.kecamatan') }}"><i class="fa fa-list-alt"></i> <span>Kecamatan</span></a></li>
+                        <li><a href="{{ route('admin.kelurahan') }}"><i class="fa fa-list-alt"></i> <span>Kelurahan</span></a></li>
+                        <li><a href="{{ route('admin.kategori') }}"><i class="fa fa-list-alt"></i> <span>Kategori</span></a></li>
                     </ul>
                 @endif
                 @if (session('role_id') == 2)
@@ -596,14 +600,8 @@
         })
         $(function() {
             $('#example1').DataTable()
-            $('#example2').DataTable({
-                'paging': true,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': true,
-                'info': true,
-                'autoWidth': false
-            })
+            $('#example2').DataTable()
+            $('#provinsi').DataTable()
         })
     </script>
     @yield('js')

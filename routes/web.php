@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin2\DashboardAdminController;
+use App\Http\Controllers\Admin2\KategoriController;
+use App\Http\Controllers\Admin2\KecamatanController;
+use App\Http\Controllers\Admin2\KelurahanController;
+use App\Http\Controllers\Admin2\KotaController;
+use App\Http\Controllers\Admin2\ProvinsiController;
 use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
 use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController, PetugasPenanggungJawab,LowonganController};
@@ -13,6 +18,7 @@ use App\Http\Controllers\users\HomeController as UsersHomeController;
 use App\Http\Controllers\users\LupaPasswordController;
 use App\Http\Controllers\users\PembuatanAk1Controller;
 use App\Http\Controllers\users\ProfilController;
+use App\Kecamatan;
 use Illuminate\Support\Facades\Route;
 // Route::redirect('/home', '/admin');
 // Auth::routes(['register' => false]);
@@ -23,6 +29,7 @@ Route::get('/ak1', 'HomeController@ak1')->name('ak1');
 // login admin
 Route::get('/loginAdmin', 'HomeController@loginAdmin')->name('loginAdmin');
 Route::post('/login-proses-admin', [HomeController::class, 'login_proses_admin'])->name('login-proses-admin');
+
 // end 
 
 // login dan register perusahaan
@@ -67,7 +74,7 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
     Route::post('hapusdataPengalaman', [CvdanKeahlianController::class, 'hapusdataPengalaman'])->name('hapusdataPengalaman');
     Route::post('hapusdataWeb', [CvdanKeahlianController::class, 'hapusdataWeb'])->name('hapusdataWeb');
     // end Cv & keahlian
- 
+
     // profil
     Route::get('profil', [ProfilController::class, 'index'])->name('profil');
     Route::post('simpan-profil', [ProfilController::class, 'simpan_profil'])->name('simpan-profil');
@@ -100,8 +107,6 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
     Route::group(['prefix' => 'profile/', 'as' => 'profile.'], function () {
         Route::get('index', [ProfilePerusahaanController::class, 'index'])->name('index');
         Route::post('update', [ProfilePerusahaanController::class, 'update'])->name('update');
-            
-
     });
 
     Route::group(['prefix' => 'undangan/', 'as' => 'undangan.'], function () {
@@ -131,6 +136,38 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth.admi
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
     Route::get('logout', [HomeController::class, 'logoutAdmin'])->name('logout');
+    Route::post('hapusdatausers', [DashboardAdminController::class, 'hapusdatausers'])->name('hapusdatausers');
+    Route::post('hapusdataperusahaan', [DashboardAdminController::class, 'hapusdataperusahaan'])->name('hapusdataperusahaan');
+
+    // provinsi
+    Route::get('provinsi', [ProvinsiController::class, 'index'])->name('provinsi');
+    Route::post('simpan-provinsi', [ProvinsiController::class, 'simpan_provinsi'])->name('simpan-provinsi');
+    Route::post('hapusdataprov', [ProvinsiController::class, 'hapusdataprov'])->name('hapusdataprov');
+    // provinsi
+
+    // kecamatan
+    Route::get('kecamatan', [KecamatanController::class, 'index'])->name('kecamatan');
+    Route::post('simpan-kecamatan', [KecamatanController::class, 'simpan_kecamatan'])->name('simpan-kecamatan');
+    Route::post('hapusdatakec', [KecamatanController::class, 'hapusdatakec'])->name('hapusdatakec');
+    // kecamatan
+
+    // kelurahan
+    Route::get('kelurahan', [KelurahanController::class, 'index'])->name('kelurahan');
+    Route::post('simpan-kelurahan', [KelurahanController::class, 'simpan_kelurahan'])->name('simpan-kelurahan');
+    Route::post('hapusdatakel', [KelurahanController::class, 'hapusdatakel'])->name('hapusdatakel');
+    // kelurahan
+    
+    // kota
+    Route::get('kota', [KotaController::class, 'index'])->name('kota');
+    Route::post('simpan-kota', [KotaController::class, 'simpan_kota'])->name('simpan-kota');
+    Route::post('hapusdatakota', [KotaController::class, 'hapusdatakota'])->name('hapusdatakota');
+    // kota
+
+    // kota
+    Route::get('kategori', [KategoriController::class, 'index'])->name('kategori');
+    Route::post('simpan-kategori', [KategoriController::class, 'simpan_kategori'])->name('simpan-kategori');
+    Route::post('hapusdatakategori', [KategoriController::class, 'hapusdatakategori'])->name('hapusdatakategori');
+    // kota
 });
 
 
