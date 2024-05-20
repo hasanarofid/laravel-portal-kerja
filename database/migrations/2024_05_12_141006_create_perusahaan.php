@@ -31,6 +31,7 @@ class CreatePerusahaan extends Migration
             $table->string('deskripsi_perusahaan');
             $table->integer('role_id');
             $table->integer('kode_perusahaan');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
 
 

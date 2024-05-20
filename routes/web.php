@@ -126,6 +126,8 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth.admi
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
     Route::get('logout', [HomeController::class, 'logoutAdmin'])->name('logout');
+    Route::post('hapusdatausers', [DashboardAdminController::class, 'hapusdatausers'])->name('hapusdatausers');
+    Route::post('hapusdataperusahaan', [DashboardAdminController::class, 'hapusdataperusahaan'])->name('hapusdataperusahaan');
 
     // provinsi
     Route::get('provinsi', [ProvinsiController::class, 'index'])->name('provinsi');
