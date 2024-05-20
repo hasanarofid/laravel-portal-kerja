@@ -13,7 +13,8 @@ class LowonganController extends Controller
 {
     public function index(Request $request)
     {
-        return view('perusahaan.lowongan.index');
+        $model = Lowongan::get();
+        return view('perusahaan.lowongan.index', ['model'=>$model]);
     }
     
     public function tambah(Request $request)
@@ -74,5 +75,15 @@ class LowonganController extends Controller
             DB::rollBack();
             return $ex->getMessage();
         }    
+    }
+
+    function loadLowongan($id)
+    {
+        $model = Lowongan::where('id_lowongan', $id)
+            ->first();
+        $html = view('perusahaan.lowongan.loadLowongan', [
+            'model' => $model,
+        ])->render();
+        return response()->json(['html' => $html]);
     }
 }
