@@ -8,7 +8,7 @@
 @section('content')
     <form action="{{ route('users.simpan-ak1') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="box box-primary" style="height: 970;">
+        <div class="box box-primary">
             <div class="box-header with-border">
                 <b>
                     <p style="font-size: 20px">Welcome to AK1</p>

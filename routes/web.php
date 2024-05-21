@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin2\BidangController;
 use App\Http\Controllers\Admin2\DashboardAdminController;
-use App\Http\Controllers\Admin2\KategoriController;
 use App\Http\Controllers\Admin2\KecamatanController;
 use App\Http\Controllers\Admin2\KelurahanController;
 use App\Http\Controllers\Admin2\KotaController;
@@ -15,6 +15,7 @@ use App\Http\Controllers\users\CvdanKeahlianController;
 use App\Http\Controllers\users\DashboardController;
 use App\Http\Controllers\users\DetailInfoController;
 use App\Http\Controllers\users\HomeController as UsersHomeController;
+use App\Http\Controllers\users\LamarPekerjaanController;
 use App\Http\Controllers\users\LupaPasswordController;
 use App\Http\Controllers\users\PembuatanAk1Controller;
 use App\Http\Controllers\users\ProfilController;
@@ -95,7 +96,13 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
 
     // cari lowongan
     Route::get('carilowongan', [CariLowonganController::class, 'index'])->name('carilowongan');
+    Route::post('setTabelCarilowongan', [CariLowonganController::class, 'setTabelCarilowongan'])->name('setTabelCarilowongan');
     // cari lowongan
+
+    // lamar pekerjaan
+    Route::get('lamarpekerjaan/{id}', [LamarPekerjaanController::class, 'index'])->name('lamarpekerjaan');
+    Route::post('simpan-lamarpekerjaan', [LamarPekerjaanController::class, 'simpan_lamarpekerjaan'])->name('simpan-lamarpekerjaan');
+    // lamar pekerjaan
 });
 
 // dashboard perusahaan
@@ -165,11 +172,11 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth.admi
     Route::post('hapusdatakota', [KotaController::class, 'hapusdatakota'])->name('hapusdatakota');
     // kota
 
-    // kota
-    Route::get('kategori', [KategoriController::class, 'index'])->name('kategori');
-    Route::post('simpan-kategori', [KategoriController::class, 'simpan_kategori'])->name('simpan-kategori');
-    Route::post('hapusdatakategori', [KategoriController::class, 'hapusdatakategori'])->name('hapusdatakategori');
-    // kota
+    // Bidang
+    Route::get('bidang', [BidangController::class, 'index'])->name('bidang');
+    Route::post('simpan-bidang', [BidangController::class, 'simpan_bidang'])->name('simpan-bidang');
+    Route::post('hapusdatabidang', [BidangController::class, 'hapusdatabidang'])->name('hapusdatabidang');
+    // Bidang
 });
 
 
