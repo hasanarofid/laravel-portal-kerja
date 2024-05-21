@@ -32,7 +32,7 @@ class CariLowonganController extends Controller
                 ->when($request->bidang_id, function ($query, $bidang_id) {
                     return $query->where('lowongan.bidang_id', $bidang_id);
                 })
-                ->whereDate('lowongan.batas_tgl_lowongan', '>=', Carbon::now()->toDateString())
+                ->whereDate(Carbon::now()->toDateString(), '>=', 'lowongan.batas_tgl_lowongan')
                 ->get();
 
             return Datatables::of($data)
