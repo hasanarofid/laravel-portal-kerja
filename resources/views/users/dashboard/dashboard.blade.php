@@ -105,39 +105,41 @@
             </b>
         </div>
         <div class="box-body">
-            @foreach ($modLowongan as $item)
-                @php
-                    $modPerusahaan = Perusahaan::where('id_perusahaan', $item['id_perusahaan'])->first();
-                @endphp
-                <p style="font-size: 15px;">
-                    <b>{{ $modPerusahaan->nama_perusahaan }}</b> membuka lowongan {{ $item['nama_lowongan'] }},
-                    {{ $item['keterangan_lowongan'] }} dengan persyaratan:
-                </p>
-                <ul>
-                    <li>Umur minimal: {{ $item['umur_minimal'] }}</li>
-                    <li>Umur maksimal: {{ $item['umur_maksimal'] }}</li>
-                    @if ($item['pria'] == 1)
-                        <li>Jenis kelamin: Laki-Laki</li>
-                    @endif
-                    @if ($item['wanita'] == 1)
-                        <li>Jenis kelamin: Perempuan</li>
-                    @endif
-                    @if ($item['lajang'] == 1)
-                        <li>Status: Masih Lajang</li>
-                    @endif
-                    <li>Detail Pekerjaan: {{ $item['detail_pekerjaan'] }}</li>
-                    <li>Profesi: {{ $item['profesi'] }}</li>
-                    <li>Batas Kontrak: {{ $item['batas_kontrak'] }} Tahun</li>
-                    <li>Jurusan: {{ $item['jurusan'] }}</li>
-                    <li>Fasilitas: {{ $item['nama_fasilitas'] }}</li>
-                </ul>
-                <p style="font-size: 15px;">
-                    Batas tanggal lowongan: {{ date('d/m/Y', strtotime($item['batas_tgl_lowongan'])) }}
-                    Tanggal mulai kerja: {{ date('d/m/Y', strtotime($item['tgl_mulai'])) }} <br>
-                    Sekian informasi dari kami.
-                </p>
-                <hr>
-            @endforeach
+            @if ($modLowongan)
+                @foreach ($modLowongan as $item)
+                    @php
+                        $modPerusahaan = Perusahaan::where('id_perusahaan', $item['id_perusahaan'])->first();
+                    @endphp
+                    <p style="font-size: 15px;">
+                        <b>{{ $modPerusahaan->nama_perusahaan }}</b> membuka lowongan {{ $item['nama_lowongan'] }},
+                        {{ $item['keterangan_lowongan'] }} dengan persyaratan:
+                    </p>
+                    <ul>
+                        <li>Umur minimal: {{ $item['umur_minimal'] }}</li>
+                        <li>Umur maksimal: {{ $item['umur_maksimal'] }}</li>
+                        @if ($item['pria'] == 1)
+                            <li>Jenis kelamin: Laki-Laki</li>
+                        @endif
+                        @if ($item['wanita'] == 1)
+                            <li>Jenis kelamin: Perempuan</li>
+                        @endif
+                        @if ($item['lajang'] == 1)
+                            <li>Status: Masih Lajang</li>
+                        @endif
+                        <li>Detail Pekerjaan: {{ $item['detail_pekerjaan'] }}</li>
+                        <li>Profesi: {{ $item['profesi'] }}</li>
+                        <li>Batas Kontrak: {{ $item['batas_kontrak'] }} Tahun</li>
+                        <li>Jurusan: {{ $item['jurusan'] }}</li>
+                        <li>Fasilitas: {{ $item['nama_fasilitas'] }}</li>
+                    </ul>
+                    <p style="font-size: 15px;">
+                        Batas tanggal lowongan: {{ date('d/m/Y', strtotime($item['batas_tgl_lowongan'])) }}
+                        Tanggal mulai kerja: {{ date('d/m/Y', strtotime($item['tgl_mulai'])) }} <br>
+                        Sekian informasi dari kami.
+                    </p>
+                    <hr>
+                @endforeach
+            @endif
         </div>
     </div>
     <!-- /.row -->
