@@ -1,26 +1,26 @@
 @php
-    use App\Kategori;
-    $modKategori = Kategori::get();
+    use App\BidangPerusahaan;
+    $modBidang = BidangPerusahaan::get();
 @endphp
 @extends('layoutuser.index')
 @section('title')
-    SIKEREN | Kategori
+    SIKEREN | Bidang
 @endsection
 @section('header')
-    Kategori
+    Bidang
 @endsection
 @section('content')
-    <form action="{{ route('admin.simpan-kategori') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.simpan-bidang') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="box box-primary">
             <div class="box-body">
                 <div class="form-group row">
                     <div class="col-md-3">
-                        <label for="nama_kategori" class="col-form-label">Nama Kategori :</label>
+                        <label for="nama_bidang" class="col-form-label">Nama Bidang :</label>
                     </div>
                     <div class="col-md-7">
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"
-                            placeholder="Nama Kategori" autocomplete="off">
+                        <input type="text" class="form-control" id="nama_bidang" name="nama_bidang"
+                            placeholder="Nama Bidang" autocomplete="off">
                     </div>
                 </div>
                 <div>
@@ -33,7 +33,7 @@
     <div class="box box-primary">
         <div class="box-header with-border">
             <b>
-                <p style="font-size: 20px">Tabel Kategori</p>
+                <p style="font-size: 20px">Tabel Bidang</p>
             </b>
         </div>
         <div class="box-body">
@@ -41,21 +41,21 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Kategori</th>
+                        <th>Nama Bidang</th>
                         <th>Tanggal Dibuat</th>
                         <th>aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($modKategori)
-                        @foreach ($modKategori as $key => $item)
+                    @if ($modBidang)
+                        @foreach ($modBidang as $key => $item)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $item->nama_kategori }}</td>
+                                <td>{{ $item->nama_bidang }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                     <div class="button-container">
-                                        <button type="button" onclick="deleteRow( {{ $item->kategori_id }} )"
+                                        <button type="button" onclick="deleteRow( {{ $item->bidang_id }} )"
                                             class="btn btn-icon btn-danger">
                                             <span><i class="fa fa-minus"></i></span>
                                         </button>
@@ -71,7 +71,7 @@
 
 @endsection
 @section('js')
-    @include('admin2.kategori.jsFunction')
+    @include('admin2.bidang.jsFunction')
 @endsection
 @if ($errors->any())
     <script stype="text/javascript">

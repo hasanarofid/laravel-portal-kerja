@@ -14,12 +14,12 @@
                 // Membuat permintaan AJAX ke server
                 $.ajax({
                     type: 'POST',
-                    url: "{{ Route('admin.hapusdatakategori') }}",
+                    url: "{{ Route('admin.hapusdatabidang') }}",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
                     },
                     data: {
-                        kategori_id: id,
+                        bidang_id: id,
                     },
                     success: function(response) {
                         // Hapus baris dari DOM jika penghapusan berhasil

@@ -213,7 +213,7 @@
                         <li><a href="{{ route('admin.kota') }}"><i class="fa fa-list-alt"></i> <span>Kota</span></a></li>
                         <li><a href="{{ route('admin.kecamatan') }}"><i class="fa fa-list-alt"></i> <span>Kecamatan</span></a></li>
                         <li><a href="{{ route('admin.kelurahan') }}"><i class="fa fa-list-alt"></i> <span>Kelurahan</span></a></li>
-                        <li><a href="{{ route('admin.kategori') }}"><i class="fa fa-list-alt"></i> <span>Kategori</span></a></li>
+                        <li><a href="{{ route('admin.bidang') }}"><i class="fa fa-list-alt"></i> <span>Bidang</span></a></li>
                     </ul>
                 @endif
                 @if (session('role_id') == 2)
