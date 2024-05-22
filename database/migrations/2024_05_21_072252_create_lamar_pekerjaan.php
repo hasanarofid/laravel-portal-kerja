@@ -19,6 +19,8 @@ class CreateLamarPekerjaan extends Migration
             $table->integer('lowongan_id');
             $table->string('lampiran_kualifikasi');
             $table->integer('status');
+            $table->date('tgl_interview')->nullable();
+            $table->string('alasan_ditolak')->nullable();
             $table->timestamps();
         });
     }
