@@ -13,7 +13,7 @@ SIKEREN | Dashboard
         height: 200px;
         margin-bottom: 10px;
         /* margin: 30px; */
-        background-image: url('{{ asset("img/bg1.jpeg") }}');
+        background-image: url('{{ asset('FotoPerusahaan/' . $loadPerusahaan->logo) }}');
         background-size: cover;
         background-position: center;
 
@@ -52,7 +52,7 @@ SIKEREN | Dashboard
 
     <div class="g-block-1">
         <div class="box box-info">
-            <img src='{{ asset("img/bg1.jpeg") }}' style="margin: 15px;width: 250px; height: 100px;">
+            <img src='{{ asset('FotoPerusahaan/' . $loadPerusahaan->logo) }}' style="margin: 15px;width: 250px; height: 100px;">
             <div class="box-header with-border">
                 <h3 class="box-title"><b>{{$loadPerusahaan->nama_perusahaan}}</b></h3>
             </div>
@@ -119,7 +119,7 @@ SIKEREN | Dashboard
                 <h4 class="modal-title">Edit Data Profile</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" id="formProfile" method="post" action='{{ Route("perusahaan.profile.update") }}'>
+                <form class="form-horizontal" id="formProfile" method="post" action='{{ Route("perusahaan.profile.update") }}' enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">

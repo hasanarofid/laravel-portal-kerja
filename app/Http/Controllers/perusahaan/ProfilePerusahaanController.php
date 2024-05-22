@@ -18,9 +18,16 @@ class ProfilePerusahaanController extends Controller
 
     function update(Request $request)
     {
-        // dd($request->input('alasan'));
+        // dd($request->all());
         DB::beginTransaction();
         try {
+            if ($request->hasFile('txtUpload')) {
+                // Menentukan nama file yang unik
+                $filename = time() . '_' . $request->txtUpload->getClientOriginalName();
+
+                // Menyimpan file 
+                $request->txtUpload->move(public_path('FotoPerusahaan'), $filename);
+            }
             $perusahaan = Perusahaan::find($request->input('txtId')); // Ganti $id dengan ID yang sesuai
             $perusahaan->update([
                 'nama_perusahaan' => $request->input('txtNama'),
@@ -30,6 +37,7 @@ class ProfilePerusahaanController extends Controller
                 'id_bidangusaha' => $request->input('txtBidang'),
                 'deskripsi_perusahaan' => $request->input('txtKeterangan'),
                 'website' =>  $request->input('txtUrl'),
+                'logo' =>  $filename,
             ]);
 
             if ($perusahaan) {
