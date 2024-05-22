@@ -26,6 +26,8 @@
                         <th>Detail Pekerjaan</th>
                         <th>Tanggal Daftar</th>
                         <th>Status</th>
+                        <th>Tanggal Interview</th>
+                        <th>Alasan Ditolak</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,6 +71,13 @@
                                             </span>
                                         </button>
                                     </td>
+                                @endif
+                                @if (!empty($modLowongan->tgl_interview))
+                                    <td>{{ date('d/m/Y', strtotime($modLowongan->tgl_interview)) }}</td>
+                                    <td>{{ $modPerusahaan->alasan_ditolak }}</td>
+                                @else
+                                    <td></td>
+                                    <td></td>
                                 @endif
                             </tr>
                         @endforeach
