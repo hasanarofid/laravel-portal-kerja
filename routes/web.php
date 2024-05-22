@@ -119,6 +119,8 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
     Route::group(['prefix' => 'undangan/', 'as' => 'undangan.'], function () {
         Route::get('index', [UndanganController::class, 'index'])->name('index');
         Route::get('getData', [UndanganController::class, 'getData'])->name('getData');
+        Route::post('updateInterview', [UndanganController::class, 'updateInterview'])->name('updateInterview');
+        Route::post('batalInterview', [UndanganController::class, 'batalInterview'])->name('batalInterview');
     });
 
     Route::group(['prefix' => 'pelamar/', 'as' => 'pelamar.'], function () {

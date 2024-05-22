@@ -1,21 +1,100 @@
 @extends('layoutuser.index')
 @section('title')
-    SIKEREN | Undangan
+SIKEREN | Undangan
 @endsection
 @section('header')
-    Undangan
+Undangan
 @endsection
 @section('content')
-    @include('perusahaan.undangan.tambahundangan')
-    <br>
-    @include('perusahaan.undangan.tabeldata')
+@include('perusahaan.undangan.tambahundangan')
+<br>
+@include('perusahaan.undangan.tabeldata')
+
 @endsection
 @section('js')
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         load_data_carilowongan();
+        $('.txtInterview').datepicker({
+            format: 'dd/mm/yyyy', // atau format yang Anda inginkan
+            autoclose: true
+        });
+
     })
-    function load_data_carilowongan() {
+
+    function simpanPerubahan() {
+        // Ambil nilai dari input atau elemen lainnya dalam modal
+        var tgl = $('#txtInterview').val();
+        var id = $('#txtId').val(); // hiddenId adalah ID input hidden yang menyimpan nilai id
+
+        // Lakukan operasi simpan, contohnya menggunakan AJAX
+        $.ajax({
+            url: '{{ Route("perusahaan.undangan.updateInterview") }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                'id': id,
+                'tgl': tgl
+            },
+            success: function(response) {
+                // Tambahkan logika penanganan sukses di sini
+                console.log('Data berhasil Di Update');
+                // Tutup modal setelah berhasil disimpan
+                $('#exampleModal').modal('hide');
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                // Tambahkan logika penanganan error di sini
+                console.error('Terjadi kesalahan:', error);
+            }
+        });
+    }
+
+    function simpanBatal() {
+        // Ambil nilai dari input atau elemen lainnya dalam modal
+        var txtAlasan = $('#txtAlasan').val();
+        var txtIdAlasan = $('#txtIdAlasan').val(); // hiddenId adalah ID input hidden yang menyimpan nilai id
+
+        // Lakukan operasi simpan, contohnya menggunakan AJAX
+        $.ajax({
+            url: '{{ Route("perusahaan.undangan.batalInterview") }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                'id': txtIdAlasan,
+                'alasan': txtAlasan
+            },
+            success: function(response) {
+                // Tambahkan logika penanganan sukses di sini
+                console.log('Data berhasil Di Update');
+                // Tutup modal setelah berhasil disimpan
+                $('#batalModal').modal('hide');
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                // Tambahkan logika penanganan error di sini
+                console.error('Terjadi kesalahan:', error);
+            }
+        });
+    }
+
+    function refreshTabel() {
+        var txtKeterampilan = $('#txtKeterampilan').val();
+        var txtPendidikan = $('#txtPendidikan').val();
+        var txtProdi = $('#txtProdi').val();
+        var txtBidang = $('#txtBidang').val();
+        var txtStatus = $('#txtStatus').val();
+        var txtMinat = $('#txtMinat').val();
+        var rbGender = $('input[name="rbGender"]').val();
+        var txtMinimal = $('#txtMinimal').val();
+        var txtMaksimal = $('#txtMaksimal').val();
+
+        $('#table-undangan').DataTable().destroy();
+
+        load_data_carilowongan(txtKeterampilan, txtPendidikan, txtProdi, txtBidang, txtStatus, txtMinat, rbGender, txtMinimal, txtMaksimal);
+    }
+
+    function load_data_carilowongan(txtKeterampilan = '', txtPendidikan = '', txtProdi = '', txtBidang = '', txtStatus = '', txtMinat = '', rbGender = '', txtMinimal = '', txtMaksimal = '') {
         var table = $('#table-undangan').DataTable({
             scrollx: true,
             lengthMenu: [5, 10, 25, 50, 100],
@@ -34,16 +113,21 @@
                 url: "{{ Route('perusahaan.undangan.getData') }}",
                 type: 'GET',
                 data: {
-                    // nama_perusahaan: nama_perusahaan,
-                    // nama_lowongan: nama_lowongan,
-                    // bidang_id: bidang_id
+                    txtKeterampilan: txtKeterampilan,
+                    txtPendidikan: txtPendidikan,
+                    txtProdi: txtProdi,
+                    txtBidang: txtBidang,
+                    txtStatus: txtStatus,
+                    txtMinat: txtMinat,
+                    rbGender: rbGender,
+                    txtMinimal: txtMinimal,
+                    txtMaksimal: txtMaksimal,
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
                 },
             },
-            columns: [
-                {
+            columns: [{
                     data: null
                 },
                 {
@@ -58,12 +142,12 @@
                 {
                     data: 'tanggal_lahir'
                 },
-                {
-                    data: 'pendidikan'
-                },
-                {
-                    data: 'bidang_pengalaman'
-                },
+                // {
+                //     data: 'pendidikan'
+                // },
+                // {
+                //     data: 'bidang_pengalaman'
+                // },
                 {
                     data: 'no_hp'
                 },
@@ -91,5 +175,15 @@
             });
         });
     }
+
+    function onVerif(id) {
+        $('#verifModal').modal('show');
+        $('#txtId').val(id);
+    }
+
+    function onBatal(id) { 
+        $('#batalModal').modal('show');
+        $('#txtIdAlasan').val(id);
+     }
 </script>
 @endsection

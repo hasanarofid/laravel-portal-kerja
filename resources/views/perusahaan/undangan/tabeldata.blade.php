@@ -26,8 +26,8 @@
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <th>Tanggal Lahir</th>
-                        <th>Pendidikan</th>
-                        <th>Bidang Pengalaman Kerja</th>
+                        <!-- <th>Pendidikan</th>
+                        <th>Bidang Pengalaman Kerja</th> -->
                         <th>No HP</th>
                         <th>Aksi</th>
                     </tr>
@@ -36,6 +36,55 @@
 
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="verifModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="exampleModalLabel">Terima Pencaker</h2>
+            </div>
+            <div class="modal-body">
+                <label for="">Tanggal Interview</label>
+                <br>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right txtInterview" id="txtInterview" name="txtInterview">
+                </div>
+                <input type="hidden" name="txtId" id="txtId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-danger" id="btnSimpan" onclick="simpanPerubahan()">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="batalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="exampleModalLabel">Tolak Pencaker</h2>
+            </div>
+            <div class="modal-body">
+                <label for="">Alasan Ditolak</label><br>
+                <input type="text" class="form-control" name="txtAlasan" id="txtAlasan">
+                <input type="hidden" name="txtIdAlasan" id="txtIdAlasan">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-danger" onclick="simpanBatal()">Simpan</button>
+            </div>
         </div>
     </div>
 </div>
