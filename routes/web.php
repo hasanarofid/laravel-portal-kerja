@@ -118,6 +118,7 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
 
     Route::group(['prefix' => 'undangan/', 'as' => 'undangan.'], function () {
         Route::get('index', [UndanganController::class, 'index'])->name('index');
+        Route::get('getData', [UndanganController::class, 'getData'])->name('getData');
     });
 
     Route::group(['prefix' => 'pelamar/', 'as' => 'pelamar.'], function () {
