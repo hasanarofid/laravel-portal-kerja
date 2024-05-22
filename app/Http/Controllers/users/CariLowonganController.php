@@ -19,7 +19,9 @@ class CariLowonganController extends Controller
     public function setTabelCarilowongan(Request $request)
     {
         if (request()->ajax()) {
-
+            $date = Carbon::now()->toDateString();
+            $date2 = DateTime::createFromFormat('Y-m-d', $date);
+            $date3 = $date2->format('Y-m-d');
             // dd($request->nama_perusahaan, $request->nama_lowongan);
             $data = Lowongan::join('perusahaan as p', 'lowongan.id_perusahaan', '=', 'p.id_perusahaan')
                 ->select('lowongan.id_lowongan', 'lowongan.id_perusahaan', 'lowongan.nama_lowongan', 'lowongan.detail_pekerjaan', 'lowongan.tgl_mulai', 'lowongan.batas_tgl_lowongan', 'p.nama_perusahaan', 'lowongan.umur_minimal', 'lowongan.umur_maksimal', 'lowongan.bidang_id')
@@ -32,7 +34,7 @@ class CariLowonganController extends Controller
                 ->when($request->bidang_id, function ($query, $bidang_id) {
                     return $query->where('lowongan.bidang_id', $bidang_id);
                 })
-                ->whereDate(Carbon::now()->toDateString(), '>=', 'lowongan.batas_tgl_lowongan')
+                ->whereDate('lowongan.batas_tgl_lowongan', '>=', Carbon::now()->toDateString())
                 ->get();
 
             return Datatables::of($data)
