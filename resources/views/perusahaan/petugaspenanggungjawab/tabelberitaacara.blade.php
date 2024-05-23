@@ -16,24 +16,22 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($PetugasPj as $value)
                 <tr>
-                    <td>20/20/2020</td>
-                    <td>Edi</td>
-                    <td>Laki-Laki</td>
-                    <td>20/20/2020</td>
-                    <td><button type="button" class="btn btn-success"><i class="fa fa-eye"> View</i></button></td>
-                    <td>Direktur</td>
-                    <td><button type="button" class="btn btn-primary"><i class="fa fa-print"> Cetak Berita Acara</i></button></td>
+                    <td><?= Carbon\Carbon::parse($value->created_at)->format('d-m-Y')?></td>
+                    <td>{{$value->nama_petugas}}</td>
+                    <td>{{$value->jabatan}}</td>
+                    <td>{{$value->no_hp}}</td>
+                    <td>
+                        {{$value->tahapan_seleksi}}
+                        <!-- <button type="button" class="btn btn-success"><i class="fa fa-eye"> View</i></button> -->
+                    </td>
+                    <td><?= Carbon\Carbon::parse( $value->tgl_laporan)->format('d-m-Y')?></td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><i class="fa fa-print"> Cetak Berita Acara</i></button>
+                    </td>
                 </tr>
-                <tr>
-                    <td>20/20/2020</td>
-                    <td>Edi</td>
-                    <td>Laki-Laki</td>
-                    <td>20/20/2020</td>
-                    <td><button type="button" class="btn btn-success"><i class="fa fa-eye"> View</i></button></td>
-                    <td>Direktur</td>
-                    <td><button type="button" class="btn btn-primary"><i class="fa fa-print"> Cetak Berita Acara</i></button></td>
-                </tr>
+                @endforeach
             </tbody>
             <tfoot>
             </tfoot>
