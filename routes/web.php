@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin2\KotaController;
 use App\Http\Controllers\Admin2\ProvinsiController;
 use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
-use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController, PetugasPenanggungJawab,LowonganController};
+use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController,LowonganController, PetugasPenanggungJawabController};
 use App\Http\Controllers\users\BiodataController;
 use App\Http\Controllers\users\CariLowonganController;
 use App\Http\Controllers\users\CvdanKeahlianController;
@@ -128,7 +128,8 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
     });
 
     Route::group(['prefix' => 'petugaspenanggungjawab/', 'as' => 'petugaspenanggungjawab.'], function () {
-        Route::get('index', [PetugasPenanggungJawab::class, 'index'])->name('index');
+        Route::get('index', [PetugasPenanggungJawabController::class, 'index'])->name('index');
+        Route::post('simpanPetugasPj', [PetugasPenanggungJawabController::class, 'simpanPetugasPj'])->name('simpanPetugasPj');
     });
 
 
