@@ -13,6 +13,12 @@ class Lowongan extends Model
     protected $table = 'lowongan';
     protected $guarded = [];
 
+    public function perusahaan()
+    {
+        return $this->belongsTo(Perusahaan::class, 'id_perusahaan');
+    }
+
+
     // protected $fillable = [
     //     'nama', 
     //     'username', 

@@ -26,7 +26,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/ak1', 'HomeController@ak1')->name('ak1');
-
+Route::get('loker/detail/{id}', [HomeController::class, 'detaillowongan'])->name('loker.detail');
+Route::get('loker/all', [HomeController::class, 'lokerAll'])->name('loker.all');
 // login admin
 Route::get('/loginAdmin', 'HomeController@loginAdmin')->name('loginAdmin');
 Route::post('/login-proses-admin', [HomeController::class, 'login_proses_admin'])->name('login-proses-admin');
@@ -96,6 +97,7 @@ Route::group(['prefix' => 'users/', 'as' => 'users.', 'middleware' => 'auth.user
 
     // cari lowongan
     Route::get('carilowongan', [CariLowonganController::class, 'index'])->name('carilowongan');
+   
     Route::post('setTabelCarilowongan', [CariLowonganController::class, 'setTabelCarilowongan'])->name('setTabelCarilowongan');
     // cari lowongan
 

@@ -55,13 +55,13 @@
                         </tr>
                         <tr>
                             <td>
-                                <h1 class="mb-0" data-toggle="counter-up" style="text-align: center;">0</h1>
+                                <h1 class="mb-0" data-toggle="counter-up" style="text-align: center;">{{ $totalak1 }}</h1>
                             </td>
                             <td>
-                                <h1 class="mb-0" data-toggle="counter-up" style="text-align: center;">0</h1>
+                                <h1 class="mb-0" data-toggle="counter-up" style="text-align: center;">{{ $totaPelamar }}</h1>
                             </td>
                             <td>
-                                <h1 class="mb-0" data-toggle="counter-up" style="text-align: center;">0</h1>
+                                <h1 class="mb-0" data-toggle="counter-up" style="text-align: center;">{{ $totaPerusahaan }}</h1>
                             </td>
                         </tr>
                     </table>
@@ -72,98 +72,6 @@
 </div>
 <!-- Facts Start -->
 
-
-<!-- Service Start -->
-<!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h1 class="mb-0">Rekomendasi Lowongan Kerja</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-shield-alt text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Cyber Security</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
-                        </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-chart-pie text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Data Analytics</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
-                        </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-code text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Web Development</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
-                        </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fab fa-android text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Apps Development</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
-                        </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-search text-white"></i>
-                        </div>
-                        <h4 class="mb-3">SEO Optimization</h4>
-                        <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed
-                        </p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div
-                        class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
-                        <h3 class="text-white mb-3">Call Us For Quote</h3>
-                        <p class="text-white mb-3">Clita ipsum magna kasd rebum at ipsum amet dolor justo dolor est magna
-                            stet eirmod</p>
-                        <h2 class="text-white mb-0">+012 345 6789</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!-- Service End -->
-
 <!-- rekomendasi lowongan -->
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
@@ -171,42 +79,44 @@
             <h1 class="mb-0">Rekomendasi Lowongan</h1>
         </div>
         <div class="row g-2">
-            @for ($i = 1; $i <= 4; $i++) <div class="col-lg-3 wow zoomIn" data-wow-delay="0.3s">
-                <div class="card card-lowongan">
-                    <div style=" position: relative;display: inline-block;">
-                        <img src="{{ asset('img/bg1.jpeg') }}" class="card-img-top" style="position: relative;z-index: 1;">
-                        <div class="transparan" style="color: white ;background-color: rgba(0, 0, 0, 0.5); bottom: 0; position: absolute; z-index: 2;height: 25%; width: 100%; border-radius: 10%;">
-                            PT. ALIM RUGI HOYONG UNTUNG
+            @foreach ($listlowongan as $lowongan)
+                <div class="col-lg-3 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="card card-lowongan">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="{{ asset('img/bg1.jpeg') }}" class="card-img-top" style="position: relative; z-index: 1;">
+                            <div class="transparan" style="color: white; background-color: rgba(0, 0, 0, 0.5); bottom: 0; position: absolute; z-index: 2; height: 25%; width: 100%; border-radius: 10%;">
+                                {{ $lowongan->perusahaan->nama_perusahaan }}
+                            </div>
                         </div>
-
-                    </div>
-                    <div class="card-body" style="overflow-x: auto;max-width: 100%">
-                        <h5 class="card-title">Bedah Rumah</h5>
-                        <table>
-                            <tr>
-                                <td>Penempatan</td>
-                                <td> : </td>
-                                <td>bandung Barat</td>
-                            </tr>
-                            <tr>
-                                <td>Peran Pekerjaan</td>
-                                <td> : </td>
-                                <td>Menghancurkan Rumah</td>
-                            </tr>
-                            <tr>
-                                <td>Tingkat</td>
-                                <td> : </td>
-                                <td><b>Newbie</b></td>
-                            </tr>
-                        </table>
-                        <a href="#" class="btn btn-primary" style="float: right; border-radius: 10px; background-color: darkblue; margin-top: 10px;">Lihat Detail</a>
+                        <div class="card-body" style="overflow-x: auto; max-width: 100%">
+                            <h5 class="card-title">{{ $lowongan->nama_lowongan }}</h5>
+                            <table>
+                                <tr>
+                                    <td>Penempatan</td>
+                                    <td> : </td>
+                                    <td>{{ $lowongan->kota_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Peran Pekerjaan</td>
+                                    <td> : </td>
+                                    <td>{{ $lowongan->keterangan_lowongan }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tingkat</td>
+                                    <td> : </td>
+                                    <td><b>{{ $lowongan->keterangan_profesi }}</b></td>
+                                </tr>
+                            </table>
+                            <a href="{{ route('loker.detail', $lowongan->id_lowongan) }}" class="btn btn-primary" style="float: right; border-radius: 10px; background-color: darkblue; margin-top: 10px;">Lihat Detail</a>
+                        </div>
                     </div>
                 </div>
+            @endforeach
         </div>
-        @endfor
+        
     </div>
     <div class="wow zoomIn" data-wow-delay="0.1s" style="display: flex; justify-content: center; padding-top: 10%;">
-        <button class="btn btn-primary" style="border-radius: 8px;background-color: darkblue;">Lihat Lebih Banyak</button>
+        <a href="{{ route('loker.all')}}" class="btn btn-primary" style="border-radius: 8px;background-color: darkblue;">Lihat Lebih Banyak</a>
     </div>
 </div>
 </div>
@@ -224,27 +134,34 @@
             <h1 class="mb-0">Pencarian Kerja Terdaftar</h1>
         </div>
         <div class="row">
-            @for ($i = 1; $i <= 6; $i++) @php $delay=$i <=3 ? '0.' . $i * 3 . 's' : '0.' . ($i - 3) * 3 . 's' ; @endphp <div class="col-lg-4 wow slideInUp" data-wow-delay="{{ $delay }}" style="margin-bottom: 50px;">
-                <div class="blog-item bg-white custom-shadow" style="border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="{{ ('img/b1.jpg') }}" class="rounded me-3" style="width:125px; height:150px">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <p style="font-size: 13.5px">
-                                    <b>Nama</b><br>
-                                    Pendidikan <br>
-                                    Pengalaman <br>
-                                    Umur
-                                </p>
-                                <button class="btn btn-primary" style="float:right; font-size: 12px; border-radius: 8px; background-color: darkblue;">Lihat Detail</button>
+            @foreach ($listpencaker as $index => $pencaker)
+                @php
+                    $delay = $index < 3 ? '0.' . ($index + 1) * 3 . 's' : '0.' . ($index - 2) * 3 . 's';
+                @endphp
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="{{ $delay }}" style="margin-bottom: 50px;">
+                    <div class="blog-item bg-white custom-shadow" style="border-radius: 10px;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{ asset('img/b1.jpg') }}" class="rounded me-3" style="width:125px; height:150px">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p style="font-size: 13.5px">
+                                        <b>Nama:</b> {{ $pencaker->name }} <br>
+                                        <b>Email:</b> {{ $pencaker->email }} <br>
+                                        {{-- <b>Pendidikan:</b> {{ $pencaker->pendidikan }} <br>
+                                        <b>Pengalaman:</b> {{ $pencaker->pengalaman }} <br>
+                                        <b>Umur:</b> {{ $pencaker->umur }} tahun --}}
+                                    </p>
+                                    <button class="btn btn-primary" style="float:right; font-size: 12px; border-radius: 8px; background-color: darkblue;">Lihat Detail</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            @endforeach
         </div>
-        @endfor
+        
     </div>
     <div class="wow zoomIn" data-wow-delay="0.1s" style="display: flex; justify-content: center;">
         <button class="btn btn-primary" style="border-radius: 8px; background-color: darkblue;">Lihat Lebih Banyak</button>

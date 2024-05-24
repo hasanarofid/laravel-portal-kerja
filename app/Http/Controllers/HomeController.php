@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Location;
 use App\Job;
+use App\Lowongan;
+use App\PembuatanAk1;
 use App\Perusahaan;
 use App\Roles;
 use App\RoleUser;
@@ -29,8 +31,25 @@ class HomeController extends Controller
             ->orderBy('id', 'desc')
             ->take(7)
             ->get();
+        $totalak1 = PembuatanAk1::count();
+        $totaPelamar = UsersPencaker::count();
+        $totaPerusahaan = Perusahaan::count();
+        $listlowongan = Lowongan::with('perusahaan')
+        ->take(8)->get();
+        $listpencaker = UsersPencaker::take(8)->get();
+        // dd($listpencaker);
 
-        return view('index', compact(['searchLocations', 'searchCategories', 'searchByCategory', 'jobs']));
+        return view('index', compact([
+            'searchLocations', 
+            'searchCategories', 
+            'searchByCategory',
+             'jobs',
+             'totalak1',
+             'totaPelamar',
+             'totaPerusahaan',
+             'listlowongan',
+             'listpencaker'
+            ]));
     }
 
     public function search(Request $request)
@@ -206,7 +225,7 @@ class HomeController extends Controller
             'name' => 'required',
             'password' => 'required',
         ]);
-
+        
         $cek = users::where('name', $request->name)->where('password', $request->password)->first();
         $role = RoleUser::where('user_id', $cek->id)->first();
 
