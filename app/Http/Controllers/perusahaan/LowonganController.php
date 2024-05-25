@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\perusahaan;
 
+use App\BidangPerusahaan;
 use App\Http\Controllers\Controller;
+use App\Kota;
 use App\Lowongan;
 use App\Perusahaan;
+use App\Provinsi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -20,7 +23,10 @@ class LowonganController extends Controller
     public function tambah(Request $request)
     {
         // dd(session('id'));
-        return view('perusahaan.lowongan.tambah');
+        $provisi = Provinsi::get();
+        $kota = Kota::get();
+        $bidang = BidangPerusahaan::get();
+        return view('perusahaan.lowongan.tambah', ['provisi' =>$provisi, 'kota'=>$kota, 'bidang' => $bidang]);
     }
 
     function simpanLowongan(Request $request) 
@@ -32,7 +38,7 @@ class LowonganController extends Controller
             $lowongan = Lowongan::create([
                 'id_perusahaan' => session('id'),
                 'nama_lowongan' => $request->input('txtNama'),
-                'jobfair' => $request->input('txtJob'),
+                'jobfair' => Carbon::createFromFormat('d/m/Y', $request->input('txtJob'))->format('Y-m-d'),
                 'detail_pekerjaan' => $request->input('txtPekerjaan'),
                 'umur_minimal' => $request->input('txtMinimal'),
                 'umur_maksimal' => $request->input('txtMaksimal'),

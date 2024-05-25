@@ -17,7 +17,7 @@ class CreateLowongan extends Migration
             $table->increments('id_lowongan');
             $table->string('id_perusahaan');
             $table->string('nama_lowongan');
-            $table->string('jobfair');
+            $table->date('jobfair');
             $table->string('detail_pekerjaan')->nullable();
             $table->boolean('umur_minimal');
             $table->string('umur_maksimal');

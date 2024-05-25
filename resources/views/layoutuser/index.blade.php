@@ -224,8 +224,9 @@
                         <li><a href="{{ route('perusahaan.profile.index') }}"><i class="fa fa-dashboard"></i><span>Profile</span></a></li>
                         <li><a href="{{ route('perusahaan.lowongan.index') }}"><i class="fa fa-fw fa-send"></i></i><span>Lowongan</span></a></li>
                         <li><a href="{{ route('perusahaan.undangan.index') }}"><i class="fa fa-book"></i><span>Undangan</span></a></li>
-                        <li><a href="{{ route('perusahaan.pelamar.index') }}"><i class="fa fa-user"></i><span>Pelamar</span></a></li>
+                        <!-- <li><a href="{{ route('perusahaan.pelamar.index') }}"><i class="fa fa-user"></i><span>Pelamar</span></a></li> -->
                         <li><a href="{{ route('perusahaan.petugaspenanggungjawab.index') }}"><i class="fa fa-user"></i><span>Petugas Penanggung Jawab</span></a></li>
+                        <li><a href="{{ route('perusahaan.perusahaanHistory.index') }}"><i class="fa fa-user"></i><span>History Perusahaan</span></a></li>
                     </ul>
                 @endif
                 @if (session('role_id') == 3)

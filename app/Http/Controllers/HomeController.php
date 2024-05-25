@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BidangPerusahaan;
 use App\Category;
 use App\Location;
 use App\Job;
@@ -137,7 +138,8 @@ class HomeController extends Controller
 
     public function daftar(Request $request)
     {
-        return view('navbar.register_perusahaan');
+        $bidang = BidangPerusahaan::get();
+        return view('navbar.register_perusahaan',['bidang' => $bidang]);
     }
 
     public function register_perusahaan(Request $request)

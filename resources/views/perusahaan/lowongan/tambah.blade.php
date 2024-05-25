@@ -27,7 +27,7 @@ Lowongan
                     </div>
                     <div class="col-sm-6">
                         <label for="" class="control-label">JobFair</label>
-                        <input type="text" class="form-control" name="txtJob" id="txtJob">
+                        <input type="text" class="form-control datepicker" name="txtJob" id="txtJob">
                     </div>
                 </div>
                 <div class="form-group">
@@ -128,21 +128,18 @@ Lowongan
                             <tr>
                                 <td>
                                     <select name="stProvinsi" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
-                                        <option value="DKI Jakarta">DKI Jakarta</option>
-                                        <option value="Jawa Barat">Jawa Barat</option>
-                                        <option value="Jawa Tengah">Jawa Tengah</option>
-                                        <option value="Maluku Utara">Maluku Utara</option>
-                                        <option value="Maluku ">Maluku </option>
+                                        <option value="" selected disabled>--Pilih Provinsi--</option>
+                                        @foreach($provisi as $val)
+                                        <option value="{{$val->provinsi_tabel_id  }}">{{$val->nama_provinsi }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
-                                <td><select name="stKota" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
-                                        <option value="Bandung">Bandung</option>
-                                        <option value="Bekasi">Bekasi</option>
-                                        <option value="Bogor">Bogor</option>
-                                        <option value="Cimahi">Cimahi</option>
-                                        <option value="Cirebon ">Cirebon </option>
+                                <td>
+                                    <select name="stKota" class="form-control select2" style="width: 100%;">
+                                        <option value="" selected disabled>--Pilih Kota--</option>
+                                        @foreach($kota as $val2)
+                                        <option value="{{$val2->kota_tabel_id  }}">{{$val2->nama_kota }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
@@ -164,7 +161,7 @@ Lowongan
                             <tr>
                                 <td>
                                     <select name="stFasilitas" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
+                                        <option value="" selected disabled>--Pilih Fasilitas--</option>
                                         <option value="Tempat Tinggal">Tempat Tinggal</option>
                                         <option value="Toilet">Toilet</option>
                                         <option value="Tempat Beribadah">Tempat Beribadah</option>
@@ -199,16 +196,18 @@ Lowongan
                             <tr>
                                 <td>
                                     <select name="stBidang" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
-                                        <option value="Kelompok Software">Kelompok Software</option>
-                                        <option value="Operasional Sistem Informasi">Operasional Sistem Informasi</option>
+                                        <option value="" selected disabled>--Pilih Bidang--</option>
+                                        @foreach($bidang as $val3)
+                                        <option value="{{$val3->bidang_id   }}">{{$val3->nama_bidang }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
                                     <select name="stProfesi" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
-                                        <option value="Programmer">Programmer</option>
-                                        <option value="Web Designer">Web Designer</option>
+                                        <option value="" selected disabled>--Pilih Profesi--</option>
+                                        @foreach($bidang as $val3)
+                                        <option value="{{$val3->nama_bidang   }}">{{$val3->nama_bidang }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
@@ -263,14 +262,18 @@ Lowongan
                                 </td>
                                 <td>
                                     <select name="stJurusan" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
-                                        <option value="Sistem Informasi">stpendidikan</option>
+                                        <option value="" selected disabled>--Pilih Jurusan--</option>
+                                        <!-- <option value="" selected disabled>--Pilih Profesi--</option> -->
+                                        @foreach($bidang as $val3)
+                                        <option value="{{$val3->nama_bidang   }}">{{$val3->nama_bidang }}</option>
+                                        @endforeach
+                                        <!-- <option value="Sistem Informasi">stpendidikan</option>
                                         <option value="Desain Grafis">Desain Grafis</option>
-                                        <option value="Teknik Informatika">Teknik Informatika</option>
+                                        <option value="Teknik Informatika">Teknik Informatika</option> -->
                                     </select>
                                 </td>
                                 <td>
-                                <input type="text" class="form-control" name="txtPendidikanKet" id="txtPendidikanKet">
+                                    <input type="text" class="form-control" name="txtPendidikanKet" id="txtPendidikanKet">
                                 </td>
                             </tr>
                         </table>
@@ -279,7 +282,7 @@ Lowongan
                 <div class="form-group">
                     <div class="col-sm-12 text-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
-                        <button type="submit" class="btn btn-primary" >Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
             </div>
@@ -289,7 +292,7 @@ Lowongan
 @endsection
 @section('js')
 <script>
-     $(document).ready(function() {
+    $(document).ready(function() {
         $('.datepicker').datepicker({
             format: 'dd/mm/yyyy', // atau format yang Anda inginkan
             autoclose: true

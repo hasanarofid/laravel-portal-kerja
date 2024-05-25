@@ -6,12 +6,13 @@ SIKEREN | Dashboard
 Dashboard
 @endsection
 @section('content')
+
 <div>
     <div class="col-md-6">
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <img class=" img-responsive" src="../../dist/img/photo1.png" alt="User profile picture" align="left" style="height: 100px;">
+                <img class=" img-responsive" src="{{ asset('FotoPerusahaan/' . $cek->logo) }}" alt="User profile picture" align="left" style="height: 100px;">
                 <table style="width: 100%;">
                     <tr>
                         <td colspan="3"><h3><b>{{$cek->nama_perusahaan}}</b></h3></td>
@@ -29,7 +30,7 @@ Dashboard
                     <tr>
                         <td>Bidang Usaha</td>
                         <td>:</td>
-                        <td>{{$cek->id_bidangusaha}}</td>
+                        <td>{{$data->nama_bidang}}</td>
                     </tr>
                     <tr>
                         <td>{{$cek->email}}</td>
