@@ -7,6 +7,7 @@ use App\Location;
 use App\Job;
 use App\Lowongan;
 use App\PembuatanAk1;
+use App\PencariKerja;
 use App\Perusahaan;
 use App\Roles;
 use App\RoleUser;
@@ -36,7 +37,12 @@ class HomeController extends Controller
         $totaPerusahaan = Perusahaan::count();
         $listlowongan = Lowongan::with('perusahaan')
         ->take(8)->get();
-        $listpencaker = UsersPencaker::take(8)->get();
+        $listpencaker = UsersPencaker::
+        join('pencari_kerja','pencari_kerja.users_pencaker_id','=','users_pencaker.id')
+        ->take(8)->get();
+        // $modPencariKerja = PencariKerja::where('users_pencaker_id', session('pencaker_id'))->first();
+
+        // PencariKerja
         // dd($listpencaker);
 
         return view('index', compact([
@@ -50,6 +56,18 @@ class HomeController extends Controller
              'listlowongan',
              'listpencaker'
             ]));
+    }
+
+    public function lokerAll(){
+        $listlowongan = Lowongan::with('perusahaan')->get();
+        return view('loker', compact('listlowongan'));
+    }
+
+    public function pencakerAll(){
+        $listpencaker = UsersPencaker::
+        join('pencari_kerja','pencari_kerja.users_pencaker_id','=','users_pencaker.id')
+       ->get();
+        return view('pencaker', compact('listpencaker'));
     }
 
     public function search(Request $request)

@@ -28,6 +28,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/ak1', 'HomeController@ak1')->name('ak1');
 Route::get('loker/detail/{id}', [HomeController::class, 'detaillowongan'])->name('loker.detail');
 Route::get('loker/all', [HomeController::class, 'lokerAll'])->name('loker.all');
+Route::get('pencaker/all', [HomeController::class, 'pencakerAll'])->name('pencaker.all');
 // login admin
 Route::get('/loginAdmin', 'HomeController@loginAdmin')->name('loginAdmin');
 Route::post('/login-proses-admin', [HomeController::class, 'login_proses_admin'])->name('login-proses-admin');

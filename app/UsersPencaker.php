@@ -24,4 +24,10 @@ class UsersPencaker extends Model
         'gender',
         'created_at',
     ];
+
+    public function biodata()
+    {
+        return $this->belongsTo(PencariKerja::class, 'users_pencaker_id','id');
+    }
+
 }

@@ -83,7 +83,7 @@
                 <div class="col-lg-3 wow zoomIn" data-wow-delay="0.3s">
                     <div class="card card-lowongan">
                         <div style="position: relative; display: inline-block;">
-                            <img src="{{ asset('img/bg1.jpeg') }}" class="card-img-top" style="position: relative; z-index: 1;">
+                            <img src="{{ !empty($lowongan->perusahaan->logo) ? asset('FotoPerusahaan/' . $lowongan->perusahaan->logo) : asset('img/bg1.jpeg') }}" class="card-img-top" style="position: relative; z-index: 1;">
                             <div class="transparan" style="color: white; background-color: rgba(0, 0, 0, 0.5); bottom: 0; position: absolute; z-index: 2; height: 25%; width: 100%; border-radius: 10%;">
                                 {{ $lowongan->perusahaan->nama_perusahaan }}
                             </div>
@@ -142,16 +142,27 @@
                     <div class="blog-item bg-white custom-shadow" style="border-radius: 10px;">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ asset('img/b1.jpg') }}" class="rounded me-3" style="width:125px; height:150px">
+                                <img src=" {{ !empty($pencaker->foto)  ? asset('fotobiodata/' . $pencaker->foto) :  asset('img/b1.jpg') }}" class="rounded me-3" style="width:125px; height:150px">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <p style="font-size: 13.5px">
                                         <b>Nama:</b> {{ $pencaker->name }} <br>
-                                        <b>Email:</b> {{ $pencaker->email }} <br>
                                         {{-- <b>Pendidikan:</b> {{ $pencaker->pendidikan }} <br>
-                                        <b>Pengalaman:</b> {{ $pencaker->pengalaman }} <br>
-                                        <b>Umur:</b> {{ $pencaker->umur }} tahun --}}
+                                        <b>Pengalaman:</b> {{ $pencaker->pengalaman }} <br> --}}
+                                        @php
+                                            $birthDate = new DateTime($pencaker->tgl_lahir);
+
+// Membuat objek DateTime dari tanggal saat ini
+$currentDate = new DateTime('now');
+
+// Menghitung selisih antara tanggal lahir dan tanggal saat ini
+$age = $birthDate->diff($currentDate);
+
+// Mendapatkan umur dalam tahun
+$umur = $age->y;
+                                        @endphp
+                                        <b>Umur:</b> {{ $umur }} tahun
                                     </p>
                                     <button class="btn btn-primary" style="float:right; font-size: 12px; border-radius: 8px; background-color: darkblue;">Lihat Detail</button>
                                 </div>
@@ -164,7 +175,7 @@
         
     </div>
     <div class="wow zoomIn" data-wow-delay="0.1s" style="display: flex; justify-content: center;">
-        <button class="btn btn-primary" style="border-radius: 8px; background-color: darkblue;">Lihat Lebih Banyak</button>
+        <a href="{{ route('pencaker.all')}}" class="btn btn-primary"  style="border-radius: 8px; background-color: darkblue;">Lihat Lebih Banyak</a>
     </div>
 </div>
 </div>
