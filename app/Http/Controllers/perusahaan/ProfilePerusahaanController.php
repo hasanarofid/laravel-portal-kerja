@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\perusahaan;
 
+use App\BidangPerusahaan;
 use App\Http\Controllers\Controller;
 use App\Perusahaan;
 use Illuminate\Http\Request;
@@ -12,7 +13,10 @@ class ProfilePerusahaanController extends Controller
     function index()
     {
         $loadPerusahaan = Perusahaan::where('id_perusahaan', session('id'))->first();
-        return view('perusahaan.profile.index',['loadPerusahaan' => $loadPerusahaan]);
+        $data = BidangPerusahaan::where('bidang_id', $loadPerusahaan->id_bidangusaha)->first();
+        $data2 = BidangPerusahaan::get();
+
+        return view('perusahaan.profile.index',['loadPerusahaan' => $loadPerusahaan, 'data' => $data, 'data2' => $data2]);
         // return view('perusahaan.profile.index2', ['loadPerusahaan' => $loadPerusahaan]);
     }
 

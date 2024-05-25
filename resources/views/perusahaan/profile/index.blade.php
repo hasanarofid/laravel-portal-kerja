@@ -95,7 +95,7 @@ SIKEREN | Dashboard
                 <h3 class="box-title">Bidang Perusahaan</h3>
                 <br>
                 <br>
-                <p>{{$loadPerusahaan->id_bidangusaha}}</p>
+                <p>{{$data->nama_bidang}}</p>
             </div>
             <div class="box-header with-border">
                 <i class="fa fa-fw fa-link"></i>
@@ -150,11 +150,17 @@ SIKEREN | Dashboard
                         <div class="form-group">
                             <label for="txtBidang" class="col-sm-2 control-label">Bidang Perusahaan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="txtBidang" id="txtBidang" value="{{$loadPerusahaan->id_bidangusaha}}">
+                            <select name="company_id" id="company" class="form-control" required>
+                                @foreach($data2 as $val)
+                                    <option value="{{ $val->bidang_id  }}" {{ $loadPerusahaan->id_bidangusaha == $val->bidang_id  ? 'selected' : '' }}>
+                                    {{ $val->nama_bidang }}</option>
+                                @endforeach
+                            </select>
+                                <!-- <input type="text" class="form-control" name="txtBidang" id="txtBidang" value="{{$loadPerusahaan->id_bidangusaha}}"> -->
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtBidang" class="col-sm-2 control-label">Url Perusahaan</label>
+                            <label for="txtUrl" class="col-sm-2 control-label">Url Perusahaan</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="txtUrl" id="txtUrl" value="{{$loadPerusahaan->website}}">
                             </div>
@@ -165,7 +171,7 @@ SIKEREN | Dashboard
                                 <textarea class="form-control" rows="3" name="txtKeterangan" id="txtKeterangan">{{$loadPerusahaan->deskripsi_perusahaan}}</textarea>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="txtSektorBidang" class="col-sm-2 control-label">Bidang</label>
                             <div class="col-sm-10">
                                 <select name="txtSektorBidang" id="txtSektorBidang" style="width: 50%;">
@@ -174,7 +180,7 @@ SIKEREN | Dashboard
                                     <option value="3">Jaringan dan Infrastruktur TI</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="txtSektorKeterangan" class="col-sm-2 control-label">Keterangan</label>
                             <div class="col-sm-10">

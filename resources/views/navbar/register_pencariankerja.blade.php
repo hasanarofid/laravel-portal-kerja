@@ -99,7 +99,7 @@
 
         /* Tambahkan kelas CSS untuk label pada pilihan default */
         .select-label {
-            color: #555;
+            color: #555; 
         }
     </style>
     <div class="container">

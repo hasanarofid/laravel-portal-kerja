@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin2\KotaController;
 use App\Http\Controllers\Admin2\ProvinsiController;
 use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\perusahaan\DashboardPerusahaanController;
-use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController,LowonganController, PetugasPenanggungJawabController};
+use App\Http\Controllers\perusahaan\{DashboardPerusahaanController, ProfilePerusahaanController, UndanganController, PelamarController,LowonganController, PerusahaanHistoryController, PetugasPenanggungJawabController};
 use App\Http\Controllers\users\BiodataController;
 use App\Http\Controllers\users\CariLowonganController;
 use App\Http\Controllers\users\CvdanKeahlianController;
@@ -124,6 +124,11 @@ Route::group(['prefix' => 'perusahaan/', 'as' => 'perusahaan.', 'middleware' => 
         Route::get('getData', [UndanganController::class, 'getData'])->name('getData');
         Route::post('updateInterview', [UndanganController::class, 'updateInterview'])->name('updateInterview');
         Route::post('batalInterview', [UndanganController::class, 'batalInterview'])->name('batalInterview');
+    });
+
+    Route::group(['prefix' => 'perusahaanHistory/', 'as' => 'perusahaanHistory.'], function () {
+        Route::get('index', [PerusahaanHistoryController::class, 'index'])->name('index');
+        Route::get('getData', [PerusahaanHistoryController::class, 'getData'])->name('getData');
     });
 
     Route::group(['prefix' => 'pelamar/', 'as' => 'pelamar.'], function () {
