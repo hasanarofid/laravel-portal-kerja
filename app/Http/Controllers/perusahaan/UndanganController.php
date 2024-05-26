@@ -123,9 +123,14 @@ class UndanganController extends Controller
                     return $data->no_hp;
                 })
                 ->addColumn('aksi', function ($data) {
-                    if (!empty($data->tgl_interview) || !empty($data->alasan_ditolak)) {
+                    if (!empty($data->tgl_interview) ) {
                         return '<div class="btn-group" role="group">
-
+                                    <label>Interview</label>
+                                </div>';
+                    }
+                    elseif (!empty($data->alasan_ditolak)) {
+                        return '<div class="btn-group" role="group">
+                                    <label>Ditolak</label>
                                 </div>';
                     }
                     else{

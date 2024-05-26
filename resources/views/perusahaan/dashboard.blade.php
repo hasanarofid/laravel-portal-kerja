@@ -15,7 +15,9 @@ Dashboard
                 <img class=" img-responsive" src="{{ asset('FotoPerusahaan/' . $cek->logo) }}" alt="User profile picture" align="left" style="height: 100px;">
                 <table style="width: 100%;">
                     <tr>
-                        <td colspan="3"><h3><b>{{$cek->nama_perusahaan}}</b></h3></td>
+                        <td colspan="3">
+                            <h3><b>{{$cek->nama_perusahaan}}</b></h3>
+                        </td>
                     </tr>
                     <tr>
                         <td>Alamat</td>
@@ -47,7 +49,7 @@ Dashboard
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><b>0 Lowongan</b></h3>
+                <h3 class="box-title"><b>{{$lowongan}} Lowongan</b></h3>
                 <br>
                 <p>Total Lowongan Yang Pernah Di Daftarkan Di Disnaker</p>
             </div>
@@ -56,7 +58,7 @@ Dashboard
         </div>
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><b>0 Lowongan Aktif</b></h3>
+                <h3 class="box-title"><b>{{$lowongan2}} Lowongan Aktif</b></h3>
                 <br>
                 <p>Total Lowongan Yang Aktif Saat Ini Di Disnaker</p>
             </div>
@@ -81,7 +83,23 @@ Dashboard
     <div class="box box-primary">
         <div class="box-header with-border">
             <h3 class="box-title"><b>Agenda Perusahaan</b></h3>
-            <br><br><br>
+            <div class="box-body">
+                @if ($modLamar)
+                @foreach ($modLamar as $item)
+                <p style="font-size: 15px;">
+                    <b>Interview</b> Pada Tanggal {{ date('d/m/Y', strtotime($item->tgl_interview)) }},
+                </p>
+                <ul>
+                    <li>Nama Pencaker : {{ $item->nama }}</li>
+                    <li>Jenis Kelamin: {{ $item->gender }}</li>
+                    <li>Umur: {{ $item->umur }}</li>
+                    <li>Email: {{ $item->email }}</li>
+                    <li>Melamar Sebagai: {{ $item->nama_lowongan }}</li>
+                </ul>
+                <hr>
+                @endforeach
+                @endif
+            </div>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
