@@ -227,7 +227,7 @@
                             {{-- <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5> --}}
                             <h1 class="text-white mb-md-4 animated zoomIn">SISTEM TENAGA KERJA ONLINE</h1>
                             <h2 class=" text-white mb-md-4 animated zoomIn">DINAS KETENAGAKERJAAN BANDUNG BARAT</h2>
-                            <a href="quote.html"
+                            <a href="{{ url('/loginpencariankerja') }}"
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Masuk</a>
                             {{-- <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a> --}}
                         </div>

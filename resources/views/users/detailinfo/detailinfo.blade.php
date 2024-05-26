@@ -72,8 +72,8 @@
                                         </button>
                                     </td>
                                 @endif
-                                <td>{{ !empty($modLowongan->tgl_interview) ? date('d/m/Y', strtotime($modLowongan->tgl_interview)) : "-" }}</td>
-                                <td>{{ !empty($modPerusahaan->alasan_ditolak) ? $modPerusahaan->alasan_ditolak : "-" }}</td>
+                                <td>{{ !empty($item->tgl_interview) ? date('d/m/Y', strtotime($item->tgl_interview)) : "-" }}</td>
+                                <td>{{ !empty($item->alasan_ditolak) ? $item->alasan_ditolak : "-" }}</td>
                             </tr>
                         @endforeach
                     @endif

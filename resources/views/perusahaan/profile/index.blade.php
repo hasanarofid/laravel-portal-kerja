@@ -150,7 +150,7 @@ SIKEREN | Dashboard
                         <div class="form-group">
                             <label for="txtBidang" class="col-sm-2 control-label">Bidang Perusahaan</label>
                             <div class="col-sm-10">
-                            <select name="company_id" id="company" class="form-control" required>
+                            <select name="txtBidang" id="txtBidang" class="form-control" required>
                                 @foreach($data2 as $val)
                                     <option value="{{ $val->bidang_id  }}" {{ $loadPerusahaan->id_bidangusaha == $val->bidang_id  ? 'selected' : '' }}>
                                     {{ $val->nama_bidang }}</option>
@@ -181,12 +181,12 @@ SIKEREN | Dashboard
                                 </select>
                             </div>
                         </div> -->
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="txtSektorKeterangan" class="col-sm-2 control-label">Keterangan</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" rows="3" name="txtSektorKeterangan" id="txtSektorKeterangan"></textarea>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="txtUpload" class="col-sm-2 control-label">Upload Logo Perusahaan</label>
                             <div class="col-sm-10">
