@@ -160,21 +160,19 @@ Lowongan
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="stFasilitas" class="form-control select2" style="width: 100%;">
+                                    <select name="stFasilitasId" class="form-control select2" style="width: 100%;">
                                         <option value="" selected disabled>--Pilih Fasilitas--</option>
-                                        <option value="Tempat Tinggal">Tempat Tinggal</option>
-                                        <option value="Toilet">Toilet</option>
-                                        <option value="Tempat Beribadah">Tempat Beribadah</option>
-                                        <option value="Transportasi">Transportasi</option>
+                                         @foreach($fasilitas as $valfasilitas)
+                                        <option value="{{$valfasilitas->fasilitas_id  }}">{{$valfasilitas->nama_fasilitas }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
                                     <select name="stFasilitas" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
-                                        <option value="Tempat Tinggal">Tempat Tinggal</option>
-                                        <option value="Toilet">Toilet</option>
-                                        <option value="Tempat Beribadah">Tempat Beribadah</option>
-                                        <option value="Transportasi">Transportasi</option>
+                                        <option value="" selected disabled>--Pilih Fasilitas--</option>
+                                         @foreach($fasilitas as $valfasilitas)
+                                        <option value="{{$valfasilitas->fasilitas_id  }}">{{$valfasilitas->nama_fasilitas }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td>
@@ -228,7 +226,7 @@ Lowongan
                             <tr>
                                 <td>
                                     <select name="stBatas" class="form-control select2" style="width: 100%;">
-                                        <option value="" selected disabled>--Pilih Pendidikan--</option>
+                                        <option value="" selected disabled>--Pilih Batas Kontrak--</option>
                                         <option value="1">1 Tahun</option>
                                         <option value="2">2 Tahun</option>
                                     </select>

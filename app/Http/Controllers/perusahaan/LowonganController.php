@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\perusahaan;
 
 use App\BidangPerusahaan;
+use App\Fasilitas;
 use App\Http\Controllers\Controller;
 use App\Kota;
 use App\Lowongan;
@@ -26,7 +27,8 @@ class LowonganController extends Controller
         $provisi = Provinsi::get();
         $kota = Kota::get();
         $bidang = BidangPerusahaan::get();
-        return view('perusahaan.lowongan.tambah', ['provisi' =>$provisi, 'kota'=>$kota, 'bidang' => $bidang]);
+        $fasilitas = Fasilitas::get();
+        return view('perusahaan.lowongan.tambah', ['provisi' =>$provisi, 'kota'=>$kota, 'bidang' => $bidang, 'fasilitas' => $fasilitas]);
     }
 
     function simpanLowongan(Request $request) 
@@ -56,7 +58,7 @@ class LowonganController extends Controller
                 'provinsi_id' => $request->input('stProvinsi'),
                 'kota_id' => $request->input('stKota'),
                 'keterangan_lowongan' => $request->input('txtPenempatanKet'),
-                'fasilitas_id' => $request->input('stFasilitas'),
+                'fasilitas_id' => $request->input('stFasilitasId'),
                 'nama_fasilitas' => $request->input('stFasilitas'),
                 'keterangan_fasilitas' => $request->input('txtFasilitasket'),
                 'bidang_id' => $request->input('stBidang'),
