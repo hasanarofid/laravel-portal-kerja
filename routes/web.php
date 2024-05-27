@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin2\BidangController;
 use App\Http\Controllers\Admin2\DashboardAdminController;
+use App\Http\Controllers\Admin2\FasilitasController;
 use App\Http\Controllers\Admin2\KecamatanController;
 use App\Http\Controllers\Admin2\KelurahanController;
 use App\Http\Controllers\Admin2\KotaController;
@@ -188,6 +189,11 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth.admi
     Route::get('bidang', [BidangController::class, 'index'])->name('bidang');
     Route::post('simpan-bidang', [BidangController::class, 'simpan_bidang'])->name('simpan-bidang');
     Route::post('hapusdatabidang', [BidangController::class, 'hapusdatabidang'])->name('hapusdatabidang');
+    // Bidang
+
+    Route::get('fasilitas', [FasilitasController::class, 'index'])->name('fasilitas');
+    Route::post('simpan-fasilitas', [FasilitasController::class, 'simpan_fasilitas'])->name('simpan-fasilitas');
+    Route::post('hapusdatafasilitas', [FasilitasController::class, 'hapusdatafisilitas'])->name('hapusdatafasilitas');
     // Bidang
 });
 
