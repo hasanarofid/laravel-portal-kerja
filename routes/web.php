@@ -193,7 +193,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth.admi
 
     Route::get('fasilitas', [FasilitasController::class, 'index'])->name('fasilitas');
     Route::post('simpan-fasilitas', [FasilitasController::class, 'simpan_fasilitas'])->name('simpan-fasilitas');
-    Route::post('hapusdatafasilitas', [FasilitasController::class, 'hapusdatafisilitas'])->name('hapusdatafasilitas');
+    Route::post('hapusdatafasilitas', [FasilitasController::class, 'hapusdatafasilitas'])->name('hapusdatafasilitas');
     // Bidang
 });
 
